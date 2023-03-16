@@ -1,0 +1,565 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		171C4751294C18F400A99DBA /* InnerFeatureConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171C4750294C18F400A99DBA /* InnerFeatureConfigViewController.swift */; };
+		17313AD42947171E001A7312 /* LiveConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD32947171E001A7312 /* LiveConfigViewController.swift */; };
+		17313AD62947193C001A7312 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD52947193C001A7312 /* LeftViewController.swift */; };
+		17313AD829474833001A7312 /* PlasoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD729474833001A7312 /* PlasoUtils.swift */; };
+		17313ADA294751B8001A7312 /* RecordConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD9294751B8001A7312 /* RecordConfigViewController.swift */; };
+		17313ADC29475A96001A7312 /* ConfigInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313ADB29475A96001A7312 /* ConfigInfo.swift */; };
+		17313ADF29485634001A7312 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313ADE29485634001A7312 /* TopBarView.swift */; };
+		17313AE1294894C7001A7312 /* AuthorizationConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AE0294894C7001A7312 /* AuthorizationConfigViewController.swift */; };
+		17313AE32948956D001A7312 /* BasicConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AE22948956D001A7312 /* BasicConfigViewController.swift */; };
+		17313AE529489594001A7312 /* RTCConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AE429489594001A7312 /* RTCConfigViewController.swift */; };
+		17313AE7294895A3001A7312 /* FeatureConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AE6294895A3001A7312 /* FeatureConfigViewController.swift */; };
+		17313AEB294995F6001A7312 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AEA294995F6001A7312 /* Constant.swift */; };
+		17313AED2949BAD6001A7312 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AEC2949BAD6001A7312 /* FooterView.swift */; };
+		17313AEF2949C332001A7312 /* BaseConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AEE2949C332001A7312 /* BaseConfigViewController.swift */; };
+		17313AF1294AAF11001A7312 /* RecordBasicConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AF0294AAF11001A7312 /* RecordBasicConfigViewController.swift */; };
+		17313AF3294AAF29001A7312 /* RecordFeatureConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AF2294AAF29001A7312 /* RecordFeatureConfigViewController.swift */; };
+		BBE23283DD6D138FC0C5C1AD /* Pods_PlasoSdkDemoForiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCDC84293429B06C18D86208 /* Pods_PlasoSdkDemoForiOS.framework */; };
+		EDC33585273279FC004784F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC33584273279FC004784F1 /* AppDelegate.swift */; };
+		EDC3358C273279FC004784F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDC3358A273279FC004784F1 /* Main.storyboard */; };
+		EDC3358E27327A00004784F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC3358D27327A00004784F1 /* Assets.xcassets */; };
+		EDC3359127327A00004784F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDC3358F27327A00004784F1 /* LaunchScreen.storyboard */; };
+		EDC3359D27327A2C004784F1 /* AWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC3359827327A2B004784F1 /* AWebViewController.swift */; };
+		EDC3359F27327A2C004784F1 /* PlasoToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC3359B27327A2C004784F1 /* PlasoToolbarController.swift */; };
+		EDC335A027327A2C004784F1 /* PlasoCloudDiskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC3359C27327A2C004784F1 /* PlasoCloudDiskTableViewController.swift */; };
+		EDC335A927327A40004784F1 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC335A427327A40004784F1 /* Tool.swift */; };
+		EDC335AB27327A40004784F1 /* SignUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC335A727327A40004784F1 /* SignUtil.m */; };
+		EDC335B427327A53004784F1 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC335B327327A53004784F1 /* AppConfig.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		171C4750294C18F400A99DBA /* InnerFeatureConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerFeatureConfigViewController.swift; sourceTree = "<group>"; };
+		17313AD32947171E001A7312 /* LiveConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveConfigViewController.swift; sourceTree = "<group>"; };
+		17313AD52947193C001A7312 /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		17313AD729474833001A7312 /* PlasoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlasoUtils.swift; sourceTree = "<group>"; };
+		17313AD9294751B8001A7312 /* RecordConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordConfigViewController.swift; sourceTree = "<group>"; };
+		17313ADB29475A96001A7312 /* ConfigInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigInfo.swift; sourceTree = "<group>"; };
+		17313ADE29485634001A7312 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
+		17313AE0294894C7001A7312 /* AuthorizationConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationConfigViewController.swift; sourceTree = "<group>"; };
+		17313AE22948956D001A7312 /* BasicConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicConfigViewController.swift; sourceTree = "<group>"; };
+		17313AE429489594001A7312 /* RTCConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTCConfigViewController.swift; sourceTree = "<group>"; };
+		17313AE6294895A3001A7312 /* FeatureConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureConfigViewController.swift; sourceTree = "<group>"; };
+		17313AEA294995F6001A7312 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		17313AEC2949BAD6001A7312 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
+		17313AEE2949C332001A7312 /* BaseConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseConfigViewController.swift; sourceTree = "<group>"; };
+		17313AF0294AAF11001A7312 /* RecordBasicConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBasicConfigViewController.swift; sourceTree = "<group>"; };
+		17313AF2294AAF29001A7312 /* RecordFeatureConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFeatureConfigViewController.swift; sourceTree = "<group>"; };
+		499C753720F180E716F12D15 /* Pods-PlasoSdkDemoForiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlasoSdkDemoForiOS.release.xcconfig"; path = "Target Support Files/Pods-PlasoSdkDemoForiOS/Pods-PlasoSdkDemoForiOS.release.xcconfig"; sourceTree = "<group>"; };
+		4F0980DC2565F76F5A5502DB /* Pods-PlasoSdkDemoForiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlasoSdkDemoForiOS.debug.xcconfig"; path = "Target Support Files/Pods-PlasoSdkDemoForiOS/Pods-PlasoSdkDemoForiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		DCDC84293429B06C18D86208 /* Pods_PlasoSdkDemoForiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlasoSdkDemoForiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC33581273279FC004784F1 /* PlasoSdkDemoForiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlasoSdkDemoForiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDC33584273279FC004784F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EDC3358B273279FC004784F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EDC3358D27327A00004784F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EDC3359027327A00004784F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EDC3359827327A2B004784F1 /* AWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWebViewController.swift; sourceTree = "<group>"; };
+		EDC3359B27327A2C004784F1 /* PlasoToolbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlasoToolbarController.swift; sourceTree = "<group>"; };
+		EDC3359C27327A2C004784F1 /* PlasoCloudDiskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlasoCloudDiskTableViewController.swift; sourceTree = "<group>"; };
+		EDC335A227327A40004784F1 /* SignUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUtil.h; sourceTree = "<group>"; };
+		EDC335A427327A40004784F1 /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		EDC335A727327A40004784F1 /* SignUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUtil.m; sourceTree = "<group>"; };
+		EDC335B327327A53004784F1 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		EDC335BA273529B6004784F1 /* OC-Brigding-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OC-Brigding-Header.h"; sourceTree = "<group>"; };
+		EDC335C1273533CC004784F1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDC3357E273279FC004784F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBE23283DD6D138FC0C5C1AD /* Pods_PlasoSdkDemoForiOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E0371A6D6AA3A7126B47C5FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCDC84293429B06C18D86208 /* Pods_PlasoSdkDemoForiOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDC33578273279FC004784F1 = {
+			isa = PBXGroup;
+			children = (
+				EDC33583273279FC004784F1 /* PlasoSdkDemoForiOS */,
+				EDC33582273279FC004784F1 /* Products */,
+				F506518A3AD2F273F552819D /* Pods */,
+				E0371A6D6AA3A7126B47C5FC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EDC33582273279FC004784F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDC33581273279FC004784F1 /* PlasoSdkDemoForiOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDC33583273279FC004784F1 /* PlasoSdkDemoForiOS */ = {
+			isa = PBXGroup;
+			children = (
+				EDC33584273279FC004784F1 /* AppDelegate.swift */,
+				EDC3359B27327A2C004784F1 /* PlasoToolbarController.swift */,
+				EDC3359827327A2B004784F1 /* AWebViewController.swift */,
+				17313AD52947193C001A7312 /* LeftViewController.swift */,
+				EDC3359C27327A2C004784F1 /* PlasoCloudDiskTableViewController.swift */,
+				17313ADE29485634001A7312 /* TopBarView.swift */,
+				17313AEC2949BAD6001A7312 /* FooterView.swift */,
+				EDC335B327327A53004784F1 /* AppConfig.swift */,
+				17313AEA294995F6001A7312 /* Constant.swift */,
+				17313AD729474833001A7312 /* PlasoUtils.swift */,
+				EDC335A127327A40004784F1 /* Tools */,
+				EDC335AF27327A4B004784F1 /* LiveClass */,
+				EDC335AD27327A4A004784F1 /* Record */,
+				EDC335BA273529B6004784F1 /* OC-Brigding-Header.h */,
+				EDC335C1273533CC004784F1 /* Info.plist */,
+				EDC3358A273279FC004784F1 /* Main.storyboard */,
+				EDC3358D27327A00004784F1 /* Assets.xcassets */,
+				EDC3358F27327A00004784F1 /* LaunchScreen.storyboard */,
+				17313ADB29475A96001A7312 /* ConfigInfo.swift */,
+			);
+			path = PlasoSdkDemoForiOS;
+			sourceTree = "<group>";
+		};
+		EDC335A127327A40004784F1 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				EDC335A427327A40004784F1 /* Tool.swift */,
+				EDC335A227327A40004784F1 /* SignUtil.h */,
+				EDC335A727327A40004784F1 /* SignUtil.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		EDC335AD27327A4A004784F1 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				17313AD9294751B8001A7312 /* RecordConfigViewController.swift */,
+				17313AF0294AAF11001A7312 /* RecordBasicConfigViewController.swift */,
+				17313AF2294AAF29001A7312 /* RecordFeatureConfigViewController.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		EDC335AF27327A4B004784F1 /* LiveClass */ = {
+			isa = PBXGroup;
+			children = (
+				17313AD32947171E001A7312 /* LiveConfigViewController.swift */,
+				17313AE0294894C7001A7312 /* AuthorizationConfigViewController.swift */,
+				17313AE22948956D001A7312 /* BasicConfigViewController.swift */,
+				17313AE429489594001A7312 /* RTCConfigViewController.swift */,
+				17313AE6294895A3001A7312 /* FeatureConfigViewController.swift */,
+				171C4750294C18F400A99DBA /* InnerFeatureConfigViewController.swift */,
+				17313AEE2949C332001A7312 /* BaseConfigViewController.swift */,
+			);
+			path = LiveClass;
+			sourceTree = "<group>";
+		};
+		F506518A3AD2F273F552819D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F0980DC2565F76F5A5502DB /* Pods-PlasoSdkDemoForiOS.debug.xcconfig */,
+				499C753720F180E716F12D15 /* Pods-PlasoSdkDemoForiOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDC33580273279FC004784F1 /* PlasoSdkDemoForiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDC3359527327A00004784F1 /* Build configuration list for PBXNativeTarget "PlasoSdkDemoForiOS" */;
+			buildPhases = (
+				B4C9C3590E2AE8CDDA5FD413 /* [CP] Check Pods Manifest.lock */,
+				EDC3357D273279FC004784F1 /* Sources */,
+				EDC3357E273279FC004784F1 /* Frameworks */,
+				EDC3357F273279FC004784F1 /* Resources */,
+				86A1A93FF17CB73B70B80551 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PlasoSdkDemoForiOS;
+			productName = PlasoSdkDemoForiOS;
+			productReference = EDC33581273279FC004784F1 /* PlasoSdkDemoForiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDC33579273279FC004784F1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					EDC33580273279FC004784F1 = {
+						CreatedOnToolsVersion = 13.0;
+					};
+				};
+			};
+			buildConfigurationList = EDC3357C273279FC004784F1 /* Build configuration list for PBXProject "PlasoSdkDemoForiOS" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EDC33578273279FC004784F1;
+			productRefGroup = EDC33582273279FC004784F1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDC33580273279FC004784F1 /* PlasoSdkDemoForiOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDC3357F273279FC004784F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDC3359127327A00004784F1 /* LaunchScreen.storyboard in Resources */,
+				EDC3358E27327A00004784F1 /* Assets.xcassets in Resources */,
+				EDC3358C273279FC004784F1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		86A1A93FF17CB73B70B80551 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlasoSdkDemoForiOS/Pods-PlasoSdkDemoForiOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlasoSdkDemoForiOS/Pods-PlasoSdkDemoForiOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlasoSdkDemoForiOS/Pods-PlasoSdkDemoForiOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4C9C3590E2AE8CDDA5FD413 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlasoSdkDemoForiOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDC3357D273279FC004784F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17313ADA294751B8001A7312 /* RecordConfigViewController.swift in Sources */,
+				EDC3359D27327A2C004784F1 /* AWebViewController.swift in Sources */,
+				17313AEF2949C332001A7312 /* BaseConfigViewController.swift in Sources */,
+				17313AD42947171E001A7312 /* LiveConfigViewController.swift in Sources */,
+				17313AE32948956D001A7312 /* BasicConfigViewController.swift in Sources */,
+				EDC335AB27327A40004784F1 /* SignUtil.m in Sources */,
+				EDC335B427327A53004784F1 /* AppConfig.swift in Sources */,
+				171C4751294C18F400A99DBA /* InnerFeatureConfigViewController.swift in Sources */,
+				17313AD829474833001A7312 /* PlasoUtils.swift in Sources */,
+				EDC3359F27327A2C004784F1 /* PlasoToolbarController.swift in Sources */,
+				17313ADC29475A96001A7312 /* ConfigInfo.swift in Sources */,
+				17313AE529489594001A7312 /* RTCConfigViewController.swift in Sources */,
+				EDC335A927327A40004784F1 /* Tool.swift in Sources */,
+				EDC335A027327A2C004784F1 /* PlasoCloudDiskTableViewController.swift in Sources */,
+				17313AE1294894C7001A7312 /* AuthorizationConfigViewController.swift in Sources */,
+				17313AEB294995F6001A7312 /* Constant.swift in Sources */,
+				17313AE7294895A3001A7312 /* FeatureConfigViewController.swift in Sources */,
+				17313AED2949BAD6001A7312 /* FooterView.swift in Sources */,
+				17313AD62947193C001A7312 /* LeftViewController.swift in Sources */,
+				17313AF3294AAF29001A7312 /* RecordFeatureConfigViewController.swift in Sources */,
+				EDC33585273279FC004784F1 /* AppDelegate.swift in Sources */,
+				17313ADF29485634001A7312 /* TopBarView.swift in Sources */,
+				17313AF1294AAF11001A7312 /* RecordBasicConfigViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EDC3358A273279FC004784F1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDC3358B273279FC004784F1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EDC3358F27327A00004784F1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDC3359027327A00004784F1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDC3359327327A00004784F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EDC3359427327A00004784F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDC3359627327A00004784F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F0980DC2565F76F5A5502DB /* Pods-PlasoSdkDemoForiOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
+				DEFINES_MODULE = NO;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlasoSdkDemoForiOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PlasoSdkDemo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "用于用户头像，作业交互，上课展示图片";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "此 app 不会连接到您所用网络上的设备，只会检测与您本地网关的连通性。";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "用于实时课堂语音通话，作业语音交互";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "用于保存图片";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "用于用户头像，作业交互，上课展示图片";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sdkdemo.plaso;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/PlasoSdkDemoForiOS/OC-Brigding-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EDC3359727327A00004784F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 499C753720F180E716F12D15 /* Pods-PlasoSdkDemoForiOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0;
+				DEFINES_MODULE = NO;
+				ENABLE_BITCODE = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PlasoSdkDemoForiOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = PlasoSdkDemo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "用于用户头像，作业交互，上课展示图片";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "此 app 不会连接到您所用网络上的设备，只会检测与您本地网关的连通性。";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "用于实时课堂语音通话，作业语音交互";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "用于保存图片";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "用于用户头像，作业交互，上课展示图片";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sdkdemo.plaso;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/PlasoSdkDemoForiOS/OC-Brigding-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDC3357C273279FC004784F1 /* Build configuration list for PBXProject "PlasoSdkDemoForiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC3359327327A00004784F1 /* Debug */,
+				EDC3359427327A00004784F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDC3359527327A00004784F1 /* Build configuration list for PBXNativeTarget "PlasoSdkDemoForiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDC3359627327A00004784F1 /* Debug */,
+				EDC3359727327A00004784F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDC33579273279FC004784F1 /* Project object */;
+}
