@@ -53,9 +53,15 @@ class InnerFeatureConfigViewController: BaseConfigViewController {
             $0.title = "蓝牙"
             $0.value = false
         }
-        <<< SwitchRow(RowTag.NEWPPT) {
-            $0.title = "新PPT"
-            $0.value = false
+        
+        +++ Section("PPT")
+        <<< ActionSheetRow<String>(RowTag.NEWPPT) {
+            $0.title = "PPT类型"
+            $0.selectorTitle = "选择PPT解析类型"
+            $0.options = ["微软模式", "大西模式", "iSpring模式"]
+            $0.value = "微软模式"
+        }.onPresent { from, to in
+            to.popoverPresentationController?.permittedArrowDirections = .up
         }
 
         +++ Section("")
@@ -153,8 +159,17 @@ extension InnerFeatureConfigViewController {
         return enabled ? (form.rowBy(tag: RowTag.CUSTOMADDRESS)?.baseValue as? String ?? "") : ""
     }
     
-    func newPPTEnabled() -> Bool {
-        return form.rowBy(tag: RowTag.NEWPPT)?.baseValue as? Bool ?? false
+    func pptType() -> UpimeFileType {
+        let ppt = form.rowBy(tag: RowTag.NEWPPT)?.baseValue as? String ?? ""
+        
+        switch ppt {
+        case "大西模式":
+            return UpimeFileType.NEW_PPT
+        case "iSpring模式":
+            return UpimeFileType.ISPRING_PPT
+        default:
+            return UpimeFileType.PPT
+        }
     }
     
 }

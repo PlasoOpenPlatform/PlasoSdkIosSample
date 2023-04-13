@@ -136,7 +136,7 @@ class RecordConfigViewController: UIViewController {
         recorderVC.waterMarkDynamic = featureConfigVC.watermarkDynamicEnabled()
 
         recorderVC.enableInteractPPT = featureConfigVC.interactPPTEnabled()
-        recorderVC.userNPPT = featureConfigVC.newPPTEnabled()
+        recorderVC.pptType = Int32(featureConfigVC.pptType().rawValue)
         recorderVC.recordType = basicConfigVC.recordType()
         recorderVC.delegate = self;
 
@@ -186,10 +186,7 @@ extension RecordConfigViewController: PlasoCloudDiskTableViewControllerDelegate 
         case "Video":
             upimeFileType = .VIDEO
         case "PPT":
-            upimeFileType = .PPT
-            if (featureConfigVC.newPPTEnabled()) {
-                upimeFileType = .NEW_PPT
-            }
+            upimeFileType = featureConfigVC.pptType()
         case "PDF":
             upimeFileType = .PDF
         case "Word":

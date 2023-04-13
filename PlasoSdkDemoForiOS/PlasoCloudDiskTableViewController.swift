@@ -10,7 +10,7 @@ import UIKit
 
 @objc protocol PlasoCloudDiskTableViewControllerDelegate {
     @objc optional
-    func cloudDiskTableViewControllerDidSelectFile(file: [String: String])
+    func cloudDiskTableViewControllerDidSelectFile(file: [String: AnyObject])
 }
 
 class PlasoCloudDiskTableViewController: UITableViewController {
@@ -18,116 +18,226 @@ class PlasoCloudDiskTableViewController: UITableViewController {
     @objc var delegate: PlasoCloudDiskTableViewControllerDelegate?
     
     
-    var fileList:[[String: String]] = [
+    var fileList = [
+        
         [
-            "title": "Music.mp3",
-            "url": "https://file.plaso.cn/test-plaso/teaching/1139/1024044_0_1630738880808.mp3",
-            "fileType": "Audio",
+            "title": "直角三角形",
+            "url": "https://hls.videocc.net/ca19080b2e/a/ca19080b2e18fe999693b78a10d304fa.m3u8?device=desktop&pid=1665558120704X1832259",
+            "fileType": "Video",
         ],
-            [
-                "title": "问题视频课件m3u8",
-                "url": "http://192.168.1.100:8081/m3u8/62f2006d10991d185c473da06db673a2_1.m3u8",
-                "fileType": "Video",
-            ],
+        
+        [
+            "title": "未显示?",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/6336972900000024cd000002.pdf",
+            "fileType": "PDF",
+        ],
         [
             "title": "problem_pdf",
             "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/problem_pdf.pdf",
             "fileType": "PDF",
         ],
         [
-            "title": "Music Plaso.mp3",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/xihai.mp3",
-            "fileType": "Audio",
-        ],
-        [
-            "title": "15_1628302197111.pdf",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/15_1628302197111.pdf",
+            "title": "字体颜色标注不显示",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/9AU4%E7%82%B9%E8%AF%84.pdf",
             "fileType": "PDF",
         ],
         [
-            "title": "bb.mp4",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/bb.mp4",
-            "fileType": "Video",
+            "title": "旋转PDF",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/001_This%20Is%20My%20Body.pdf",
+            "fileType": "PDF",
         ],
         [
-            "title": "chengzhifeiHangyejiedu222.mp4",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/chengzhifeiHangyejiedu222.mp4",
+            "title": "PDF页数192-打开崩溃",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E5%B0%8F%E5%8D%87%E5%88%9D%E8%AF%AD%E6%96%87%E7%BB%BC%E5%90%88%E7%B4%A0%E8%B4%A8%E7%8F%AD%EF%BC%886%E7%A7%8B%EF%BC%89-%E5%86%85%E5%AE%B9.pdf",
+            "fileType": "PDF",
+        ],
+        
+        [
+            "title": "手写错位",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E6%89%8B%E5%86%99%E9%94%99%E4%BD%8D.pdf",
+            "fileType": "PDF",
+        ],
+        
+        [
+            "title": "陈瑞-白狐.mp3",
+            "url": "https://file.plaso.cn/upime/demo/file_center/%E9%99%88%E7%91%9E%20-%20%E7%99%BD%E7%8B%90.mp3",
+            "fileType": "Audio",
+        ],
+        
+        [
+            "title": "121.89m.mp4",
+            "url": "https://file.plaso.cn/upime/demo/file_center/121.89m.mp4",
             "fileType": "Video",
         ],
         
         [
             "title": "plaso_1610183429017_1.doc",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/plaso_1610183429017_1.docx",
+            "url": "https://file.plaso.cn/upime/demo/file_center/plaso_1610183429017_1.docx",
             "fileType": "Word",
         ],
         [
-            "title": "Test.xls",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/plaso_1610184007827_2.xlsx",
+            "title": "plaso_1610184007827_2.xls",
+            "url": "https://file.plaso.cn/upime/demo/file_center/plaso_1610184007827_2.xlsx",
             "fileType": "Excel",
         ],
         [
-            "title": "pptx1",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/sdk%E6%96%B0%E4%BA%BA%E5%9F%B9%E8%AE%AD.pptx",
+            "title": "Word 最后一页无法解析crash",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E4%B8%83%E5%B9%B4%E7%BA%A7%E5%90%8C%E6%AD%A5%E7%AC%AC14%E8%AE%B2%EF%BC%9A%E6%95%B4%E5%BC%8F%E7%9A%84%E9%99%A4%E6%B3%95.doc",
+            "fileType": "Word",
+        ],
+        [
+            "title": "Word 手写无法显示",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E6%95%B0%E5%88%97%E5%92%8C%E8%A7%A3%E4%B8%89%E8%A7%92%E5%BD%A2%EF%BC%88%E4%B9%A6%E5%86%99%E8%BF%87%E7%A8%8B%EF%BC%89.docx",
+            "fileType": "Word",
+        ],
+        [
+            "title": "带视频出错PPT（旧模式)",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/49594_100_1664972853208.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": " PPT错位",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E8%AF%BE%E4%BB%B6-%E9%94%99%E4%BD%8D.pptx",
+            "fileType": "PPT",
+        ],
+        
+        [
+            "title": "新人培训.pptx",
+            "url": "https://file.plaso.cn/upime/demo/file_center/1.pptx",
             "fileType": "PPT",
         ],
         [
             "title": "pptx swpier",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/swpier.pptx",
+            "url": "https://file.plaso.cn/upime/demo/file_center/swpier.pptx",
             "fileType": "PPT",
         ],
-        [
-            "title": "pptx swpier2",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/swpier2.pptx",
-            "fileType": "PPT",
-        ],
-        [
-            "title": "pptx swpier3",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/swpier3.pptx",
-            "fileType": "PPT",
-        ],
+        
         [
             "title": "pptx pri",
-            "url": "https://file.plaso.cn/dev-plaso/liveclass/wyytestfile/testpptnoPri.pptx",
+            "url": "https://file.plaso.cn/upime/demo/file_center/testpptnoPri.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "gif",
+            "url": "https://c-ssl.duitang.com/uploads/item/201812/01/20181201234638_fFTBy.thumb.1000_0.gif",
+            "fileType": "Image",
+        ],
+        
+        [
+            "title": "jpg",
+            "url": "https://file02.16sucai.com/d/file/2014/0427/071875652097059bbbffe106f9ce3a93.jpg",
+            "fileType": "Image",
+        ],
+        [
+            "title": "png",
+            "url": "https://pic.ntimg.cn/20110325/2457331_234414423000_2.png",
+            "fileType": "Image",
+        ],
+        
+        [
+            "title": "带音频的PPT",
+            "url": "https://file-plaso.oss-cn-hangzhou.aliyuncs.com/dev-plaso/c2c/myfile/8613776561823/1651900016702_1651900014947.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "波普先生的企鹅A20210810定-完全无切换.pptx",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/1.%E6%B3%A2%E6%99%AE%E5%85%88%E7%94%9F%E7%9A%84%E4%BC%81%E9%B9%85A20210810%E5%AE%9A-%E5%AE%8C%E5%85%A8%E6%97%A0%E5%88%87%E6%8D%A2.pptx",
+            "fileType": "PPT",
+        ],
+        
+        [
+            "title": "移动端不触发-平面图形计数进阶最终版.pptx",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%8D%E8%A7%A6%E5%8F%91-%E5%B9%B3%E9%9D%A2%E5%9B%BE%E5%BD%A2%E8%AE%A1%E6%95%B0%E8%BF%9B%E9%98%B6%E6%9C%80%E7%BB%88%E7%89%88.pptx",
+            "fileType": "PPT",
+        ],
+        
+        [
+            "title": "oss 预解析ppt-ispring",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/1325/1600103_0_1674012465650.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 波普先生的企鹅A20210810定.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673677904726.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 带gif的.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673678522768.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 带音频的.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673678526165.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 解析失败_含有批注.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673678528681.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 页面白屏_17-30.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673678537382.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring ppt_test.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673678575674.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 1700425_0_1657528034184.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673679050637.pptx",
+            "fileType": "PPT",
+        ],
+       
+        [
+            "title": "ppt-ispring 1700425_0_1657528030807.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673679052313.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 1641896967164_1641896962742.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673679059538.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 1643004239916_1643004238730.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673679062839.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 1649642691661_1649642691650.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673679065762.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 1643004928290_1643004923061.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673679070761.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 1643004206235_1643004196546.pptx",
+            "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673679070941.pptx",
+            "fileType": "PPT",
+        ],
+        [
+            "title": "ppt-ispring 1025484_0_1675660076072.pptx",
+            "url" :"https://file.plaso.cn/test-plaso/teaching/1139/1025484_0_1675660076072.pptx",
             "fileType": "PPT",
         ],
         
         
-        
-        
-        [
-            "title": "Video.mp4",
-            "url": "https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4",
-            "fileType": "Video",
-        ],
-        [
-            "title": "Test.ppt",
-            "url": "https://file-examples-com.github.io/uploads/2017/08/file_example_PPT_250kB.ppt",
-            "fileType": "PPT",
-        ],
-        [
-            "title": "Test.doc",
-            "url": "https://file-examples-com.github.io/uploads/2017/02/file-sample_100kB.doc",
-            "fileType": "Word",
-        ],
-        [
-            "title": "Test.xls",
-            "url": "https://file-examples-com.github.io/uploads/2017/02/file_example_XLS_10.xls",
-            "fileType": "Excel",
-        ],
-        [
-            "title": "Test.pdf",
-            "url": "https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf",
-            "fileType": "PDF",
-        ],
-    ]
+    ] as [[String: AnyObject]]
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addBarButtonClicked))
         self.tableView .register(UITableViewCell.self, forCellReuseIdentifier: "CloudDiskCell")
@@ -139,20 +249,20 @@ class PlasoCloudDiskTableViewController: UITableViewController {
         let nav = UINavigationController(rootViewController: addVC)
         present(nav, animated: true, completion: nil)
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fileList.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CloudDiskCell", for: indexPath)
-        cell.textLabel?.text = fileList[indexPath.row]["title"]
+        cell.textLabel?.text = fileList[indexPath.row]["title"] as? String ?? ""
         return cell
     }
     
@@ -164,7 +274,7 @@ class PlasoCloudDiskTableViewController: UITableViewController {
 class PlasoCloudDiskAddViewController: UIViewController {
     
     @objc var delegate: PlasoCloudDiskTableViewControllerDelegate?
-
+    
     let titleList = [
         "None",
         "PPT",
@@ -200,7 +310,7 @@ class PlasoCloudDiskAddViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(cancelBarButtonClicked))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(addBarButtonClicked))
-
+        
         configSubView()
     }
     
@@ -220,7 +330,7 @@ class PlasoCloudDiskAddViewController: UIViewController {
             stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
         }
-
+        
         stackView.addArrangedSubview(titleTextField)
         stackView.addArrangedSubview(urlTextField)
         
@@ -238,7 +348,7 @@ class PlasoCloudDiskAddViewController: UIViewController {
             "title": titleTextField.text ?? "",
             "url": urlTextField.text ?? "",
             "fileType": fileTypeSegmentedControl.titleForSegment(at: fileTypeSegmentedControl.selectedSegmentIndex) ?? "None",
-        ]
+        ] as!  [String: AnyObject]
         dismiss(animated: true, completion: nil)
         delegate?.cloudDiskTableViewControllerDidSelectFile?(file: fileInfo)
     }

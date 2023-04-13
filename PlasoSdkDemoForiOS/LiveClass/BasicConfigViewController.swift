@@ -71,7 +71,7 @@ class BasicConfigViewController: BaseConfigViewController {
             $0.title = "屏幕比例"
             $0.value = "1280x720"
         }
-        <<< IntRow() {
+        <<< IntRow(RowTag.DURATION) {
             $0.title = "课程时长(分钟)"
             $0.value = 20
         }
@@ -80,15 +80,15 @@ class BasicConfigViewController: BaseConfigViewController {
             $0.value = 6
         }
         
-        +++ Section("提醒时间")
-        <<< DateRow(RowTag.DATE) {
+        <<< DateTimeInlineRow(RowTag.DATE) {
+            $0.title = "提醒时间"
             $0.value = Date()
-            $0.title = "日期"
+        }.onExpandInlineRow { cell, row, inlineRow in
+            inlineRow.cellUpdate() { cell, row in
+                cell.datePicker.datePickerMode = .dateAndTime
+            }
         }
-        <<< CountDownInlineRow(RowTag.TIME) {
-            $0.value = Date()
-            $0.title = "时间"
-        }
+
     }
     
     private func resetSelected(_ selectedRow: BaseRow) {
@@ -114,7 +114,7 @@ class BasicConfigViewController: BaseConfigViewController {
             dic["d_dimension"] = screenRatio
         }
         
-        if let duration = form.rowBy(tag: RowTag.SCREENRATIO)?.baseValue as? Int {
+        if let duration = form.rowBy(tag: RowTag.DURATION)?.baseValue as? Int {
             let lessonDuration = duration * 60
             dic["validTime"] = lessonDuration
             dic["endTime"] = Int(Date().timeIntervalSince1970) + lessonDuration

@@ -34,6 +34,7 @@ class LiveConfigViewController: UIViewController {
     
     private func setupUI() {
         let headerView = TopBarView.init(titles: ["鉴权", "基本配置", "RTC", "特性"])
+        innerFeatureConfigVC = InnerFeatureConfigViewController()
         headerView.setupButtonHandle { [self] title in
             for vc in viewControllers {
                 vc.view.isHidden = true
@@ -186,7 +187,7 @@ class LiveConfigViewController: UIViewController {
         if innerFeatureConfigVC != nil {
             liveVC.mobileTeaching = innerFeatureConfigVC!.mobileTeachingEnabled()
             liveVC.auxiliaryCamera = innerFeatureConfigVC!.auxiliaryCameraEnabled()
-            liveVC.userNPPT = innerFeatureConfigVC!.newPPTEnabled()
+            liveVC.pptType = Int32(innerFeatureConfigVC!.pptType().rawValue)
             
             let inviteCode = innerFeatureConfigVC!.inviteCode()
             let inviteURL = innerFeatureConfigVC!.inviteURL()
@@ -315,14 +316,14 @@ extension LiveConfigViewController: TextFieldDelegate, UpimeLiveDelegate, UpimeE
     
     //----------------------CloudDiskViewControllerDelegate----------------------------
     
-    func cloudDiskTableViewControllerDidSelectFile(file: [String : String]) {
-        guard let urlStr = file["url"] else {
+    func cloudDiskTableViewControllerDidSelectFile(file: [String : AnyObject]) {
+        guard let urlStr = file["url"] as? String else {
             return
         }
         guard let webUrl = URL(string: urlStr) else {
             return
         }
-        guard let fileTypeStr = file["fileType"] else {
+        guard let fileTypeStr = file["fileType"] as? String else {
             return
         }
         var fileType: UpimeFileType
@@ -331,20 +332,25 @@ extension LiveConfigViewController: TextFieldDelegate, UpimeLiveDelegate, UpimeE
         } else if fileTypeStr == "Video" {
             fileType = .VIDEO
         } else if fileTypeStr == "PPT" {
-            fileType = .PPT
+            fileType = innerFeatureConfigVC!.pptType()
         } else if fileTypeStr == "PDF" {
             fileType = .PDF
         } else if fileTypeStr == "Word" {
             fileType = .WORD
         } else if fileTypeStr == "Excel" {
             fileType = .EXCEL
+        } else if fileTypeStr == "Image" {
+            fileType = .IMAGE
         } else {
             fileType = .CANNOTHANDLE
         }
-        let upimeFile = UpimeFile.init(url: webUrl, type: fileType)
-        upimeFile.title = file["title"]
-        self.liveVC?.insert(upimeFile)
         
+        defer {
+            let upimeFile = UpimeFile.init(url: webUrl, type: fileType)
+            upimeFile.title = file["title"] as? String ?? ""
+            self.liveVC?.insert(upimeFile)
+        }
+                
         if let vc = self.liveVC?.presentedViewController {
             vc.dismiss(animated: true, completion: nil)
         }

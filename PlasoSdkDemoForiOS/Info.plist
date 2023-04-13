@@ -30,6 +30,10 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>用于用户头像，作业交互，上课展示图片</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>用于在实时课堂中连接手写板设备，便于快速手写操作</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>用于在实时课堂中连接手写板设备，便于快速手写操作</string>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>此 app 不会连接到您所用网络上的设备，只会检测与您本地网关的连通性。</string>
 	<key>NSMicrophoneUsageDescription</key>
