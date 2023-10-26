@@ -136,7 +136,6 @@ class RecordConfigViewController: UIViewController {
         recorderVC.waterMarkDynamic = featureConfigVC.watermarkDynamicEnabled()
 
         recorderVC.enableInteractPPT = featureConfigVC.interactPPTEnabled()
-        recorderVC.pptType = Int32(featureConfigVC.pptType().rawValue)
         recorderVC.recordType = basicConfigVC.recordType()
         recorderVC.delegate = self;
 
@@ -248,12 +247,15 @@ extension RecordConfigViewController {
 }
 
 extension RecordConfigViewController: UpimeRecordDelegate {
+    
+    // 显示资料中心
     func upimeShowCloudDisk(_ upimeEditorVC: UIViewController & UpimeEditorProtocol) {
         let cloudDisk = PlasoCloudDiskTableViewController()
         cloudDisk.delegate = self
         upimeEditorVC.present(UINavigationController(rootViewController: cloudDisk), animated: true, completion: nil)
     }
     
+    // 获取签名字符串
     func upimeEditorVC(_ upimeEditorVC: UIViewController & UpimeEditorProtocol, getSignQueryByParams params: [AnyHashable : Any], completion: @escaping (String?) -> Void) {
         var infoDic = params
         infoDic["appId"] = UserDefaults.standard.string(forKey: "PlasoAppID") ?? ""
@@ -285,10 +287,13 @@ extension RecordConfigViewController: UpimeRecordDelegate {
             recorderArray[oldIdx] = info
         }
     }
+    
+    // 保存草稿
     func upimeRecordVC(_ upimeRecordVC: UIViewController & UpimeRecordProtocol, didSavedDraftWith info: UpimeRecordInfo) {
         _updateOrInserRecord(info)
     }
     
+    // 结束录制
     func upimeRecordVC(_ upimeRecordVC: UIViewController & UpimeRecordProtocol, didFinishWith info: UpimeRecordInfo) {
         _updateOrInserRecord(info)
         
@@ -302,10 +307,12 @@ extension RecordConfigViewController: UpimeRecordDelegate {
         }
     }
     
+    // 从录制页面退出
     func upimeVC(onClosed upimeVC: UIViewController & UpimeProtocol, meetingID: String, code: Int) {
         upimeVC.dismiss(animated: true, completion: nil)
     }
     
+    // 微课环境ready
     func upimeRecordVC(_ upimeRecordVC: UIViewController & UpimeRecordProtocol, miniLessonReadyWithEvent event: [AnyHashable : Any]) {
         print("onMiniLessonReady \(event)")
     }
@@ -313,10 +320,12 @@ extension RecordConfigViewController: UpimeRecordDelegate {
 }
 
 extension RecordConfigViewController: UpimeUploadDelegate {
+    // 上传进度回调
     func upimeUpload(_ upimeUpload: NSObject, recordId: String, uploadProgess progess: Int32) {
         print("progress is \(progess)")
     }
     
+    // 上传结束代理
     func upimeUpload(_ upimeUpload: NSObject, uploadDidFinish resultCode: Int32, recordId: String, recordInfo info: UpimeRecordInfo?) {
         print("Upload result is \(resultCode), recordId is \(recordId)");
         

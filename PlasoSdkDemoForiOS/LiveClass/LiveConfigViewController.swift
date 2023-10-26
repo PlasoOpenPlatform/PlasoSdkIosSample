@@ -15,7 +15,6 @@ class LiveConfigViewController: UIViewController {
     private let basicConfigVC = BasicConfigViewController()
     private let rtcConfigVC = RTCConfigViewController()
     private let featureConfigVC = FeatureConfigViewController()
-    private var innerFeatureConfigVC: InnerFeatureConfigViewController?
     private var viewControllers: [BaseConfigViewController] = []
     private let contentView: UIView = UIView()
     weak var liveVC: (UIViewController & UpimeLiveProtocol)?
@@ -34,7 +33,6 @@ class LiveConfigViewController: UIViewController {
     
     private func setupUI() {
         let headerView = TopBarView.init(titles: ["鉴权", "基本配置", "RTC", "特性"])
-        innerFeatureConfigVC = InnerFeatureConfigViewController()
         headerView.setupButtonHandle { [self] title in
             for vc in viewControllers {
                 vc.view.isHidden = true
@@ -47,8 +45,6 @@ class LiveConfigViewController: UIViewController {
                     showView = rtcConfigVC.view
                 } else if title == "特性" {
                     showView = featureConfigVC.view
-                } else if title == "内部特性" {
-                    showView = innerFeatureConfigVC?.view
                 }
                 showView?.isHidden = false
                 if showView != nil {
@@ -88,9 +84,6 @@ class LiveConfigViewController: UIViewController {
         contentView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         viewControllers = [authorizationConfigVC, basicConfigVC, rtcConfigVC, featureConfigVC]
-        if innerFeatureConfigVC != nil {
-            viewControllers.append(innerFeatureConfigVC!)
-        }
         for vc in viewControllers.reversed() {
             addChild(vc)
             contentView.addSubview(vc.view)
@@ -112,11 +105,9 @@ class LiveConfigViewController: UIViewController {
         liveVC.supportCloudBox = true
         liveVC.supportLocalFile = true
         liveVC.enableVideoMark = true
+//        liveVC.uploadLogEnabled = featureConfigVC.uploadLogEnabled() //1.30.202不支持上传日志，所以这边注释掉，1.23.111才支持
         liveVC.enableSendMessage = featureConfigVC.sendMessageEnabled()
         liveVC.configKey = featureConfigVC.configKey()
-        if innerFeatureConfigVC != nil {
-            liveVC.supportBlueToothConnect = innerFeatureConfigVC!.bluetoothEnabled()
-        }
         if featureConfigVC.newTeachingAidsEnabled() {
             liveVC.teachToolTypes = PureUpimeTeachToolType(rawValue: PureUpimeTeachToolType.TRIANGLE.rawValue | PureUpimeTeachToolType.RECT.rawValue | PureUpimeTeachToolType.ELLIPSE.rawValue | PureUpimeTeachToolType.LINE.rawValue | PureUpimeTeachToolType.CIRCLE.rawValue | PureUpimeTeachToolType.DASHEDLINE.rawValue | PureUpimeTeachToolType.SQUARE.rawValue)!
         }
@@ -184,27 +175,6 @@ class LiveConfigViewController: UIViewController {
         }
         
         liveVC.supportSelect = featureConfigVC.toolBarEnabled()
-        if innerFeatureConfigVC != nil {
-            liveVC.mobileTeaching = innerFeatureConfigVC!.mobileTeachingEnabled()
-            liveVC.auxiliaryCamera = innerFeatureConfigVC!.auxiliaryCameraEnabled()
-            liveVC.pptType = Int32(innerFeatureConfigVC!.pptType().rawValue)
-            
-            let inviteCode = innerFeatureConfigVC!.inviteCode()
-            let inviteURL = innerFeatureConfigVC!.inviteURL()
-            if !inviteCode.isEmpty, !inviteURL.isEmpty {
-                let invite = UpimeInviteCode()
-                invite.inviteCode = inviteCode
-                invite.inviteURLString = inviteURL
-                liveVC.inviteCode = invite
-            }
-            
-            let platform = innerFeatureConfigVC!.platform()
-       
-            if !platform.isEmpty {
-                liveVC.platform = platform
-            }
-
-        }
         liveVC.residentCamera = featureConfigVC.residentCameraEnabled()
 
         let to = WebviewObject()
@@ -228,9 +198,6 @@ class LiveConfigViewController: UIViewController {
         parameters["beginTime"] = beginTime
         parameters["groupUserCount"] = 3
         parameters["validTime"] = 10800
-        if innerFeatureConfigVC?.doubleTeacherEnabled() ?? false {
-            parameters["videoStream"] = 18
-        }
 
         for vc in viewControllers {
             let dic = vc.configInfoParameter()
@@ -239,15 +206,6 @@ class LiveConfigViewController: UIViewController {
         
         print(parameters)
         var query  = Tool.sign(params: parameters)
-        
-        let customAddress = innerFeatureConfigVC?.customAddress() ?? ""
-        if customAddress.count > 0 {
-            if (customAddress.firstIndex(of: "?") != nil)   {
-                query = customAddress + "&" + query
-            } else {
-                query = customAddress + "?" + query
-            }
-        }
 
         return query
     }
@@ -331,8 +289,6 @@ extension LiveConfigViewController: TextFieldDelegate, UpimeLiveDelegate, UpimeE
             fileType = .AUDIO
         } else if fileTypeStr == "Video" {
             fileType = .VIDEO
-        } else if fileTypeStr == "PPT" {
-            fileType = innerFeatureConfigVC!.pptType()
         } else if fileTypeStr == "PDF" {
             fileType = .PDF
         } else if fileTypeStr == "Word" {

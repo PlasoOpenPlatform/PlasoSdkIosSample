@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		171C4751294C18F400A99DBA /* InnerFeatureConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171C4750294C18F400A99DBA /* InnerFeatureConfigViewController.swift */; };
 		17313AD42947171E001A7312 /* LiveConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD32947171E001A7312 /* LiveConfigViewController.swift */; };
 		17313AD62947193C001A7312 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD52947193C001A7312 /* LeftViewController.swift */; };
 		17313AD829474833001A7312 /* PlasoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD729474833001A7312 /* PlasoUtils.swift */; };
@@ -37,7 +36,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		171C4750294C18F400A99DBA /* InnerFeatureConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerFeatureConfigViewController.swift; sourceTree = "<group>"; };
 		17313AD32947171E001A7312 /* LiveConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveConfigViewController.swift; sourceTree = "<group>"; };
 		17313AD52947193C001A7312 /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		17313AD729474833001A7312 /* PlasoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlasoUtils.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 				17313AE22948956D001A7312 /* BasicConfigViewController.swift */,
 				17313AE429489594001A7312 /* RTCConfigViewController.swift */,
 				17313AE6294895A3001A7312 /* FeatureConfigViewController.swift */,
-				171C4750294C18F400A99DBA /* InnerFeatureConfigViewController.swift */,
 				17313AEE2949C332001A7312 /* BaseConfigViewController.swift */,
 			);
 			path = LiveClass;
@@ -301,7 +298,6 @@
 				17313AE32948956D001A7312 /* BasicConfigViewController.swift in Sources */,
 				EDC335AB27327A40004784F1 /* SignUtil.m in Sources */,
 				EDC335B427327A53004784F1 /* AppConfig.swift in Sources */,
-				171C4751294C18F400A99DBA /* InnerFeatureConfigViewController.swift in Sources */,
 				17313AD829474833001A7312 /* PlasoUtils.swift in Sources */,
 				EDC3359F27327A2C004784F1 /* PlasoToolbarController.swift in Sources */,
 				17313ADC29475A96001A7312 /* ConfigInfo.swift in Sources */,
@@ -465,7 +461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 5VXKL3XX7M;
 				ENABLE_BITCODE = NO;
@@ -489,7 +485,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.23.111;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sdkdemo.plaso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -507,7 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 5VXKL3XX7M;
@@ -532,7 +528,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.23.111;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sdkdemo.plaso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -49,6 +49,11 @@ class FeatureConfigViewController: BaseConfigViewController {
             $0.value = false
             $0.hidden = "$watermark_enabled == false"
         }
+        
+        <<< SwitchRow(RowTag.UPLOADLOGENABLED) {
+            $0.title = "允许上传日志"
+            $0.value = true
+        }
 
         +++ Section("功能")
         <<< ActionSheetRow<String>(RowTag.FILETYPE) {
@@ -158,6 +163,10 @@ extension FeatureConfigViewController {
     
     func interactPPTEnabled() -> Bool {
         return form.rowBy(tag: RowTag.INTERACTPPTENABLED)?.baseValue as? Bool ?? true
+    }
+    
+    func uploadLogEnabled() -> Bool {
+        return form.rowBy(tag: RowTag.UPLOADLOGENABLED)?.baseValue as? Bool ?? true
     }
     
     func newSmallboardEnabled() -> Bool {

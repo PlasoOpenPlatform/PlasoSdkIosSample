@@ -103,6 +103,11 @@ class RecordFeatureConfigViewController: BaseConfigViewController {
             $0.title = "可交互PPT"
             $0.value = true
         }
+//        <<< SwitchRow(RowTag.SUPPORTHIGHLIGHTER) {
+//            $0.title = "荧光笔"
+//            $0.value = true
+//        }
+        
         
         +++ Section("PPT")
         <<< ActionSheetRow<String>(RowTag.NEWPPT) {
@@ -126,6 +131,10 @@ extension RecordFeatureConfigViewController {
     func interactPPTEnabled() -> Bool {
         return form.rowBy(tag: RowTag.INTERACTPPTENABLED)?.baseValue as? Bool ?? true
     }
+    
+//    func supportHighlighter() -> Bool {
+//        return form.rowBy(tag: RowTag.SUPPORTHIGHLIGHTER)?.baseValue as? Bool ?? true
+//    }
     
     private func watermarkEnabled() -> Bool {
         return form.rowBy(tag: RowTag.WATERMARKENABLED)?.baseValue as? Bool ?? false
@@ -161,8 +170,6 @@ extension RecordFeatureConfigViewController {
         switch ppt {
         case "大西模式":
             return UpimeFileType.NEW_PPT
-        case "iSpring模式":
-            return UpimeFileType.ISPRING_PPT
         default:
             return UpimeFileType.PPT
         }

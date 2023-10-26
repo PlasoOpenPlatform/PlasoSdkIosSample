@@ -11,6 +11,7 @@ import Eureka
 class LeftViewController: FormViewController {
     
     var liveConfigVC: UIViewController?
+    var recordConfigVC: UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,18 @@ class LeftViewController: FormViewController {
             cell.height = {(isIphone() ? 50 : 60)}
         }).onCellSelection({ [weak self] cell, row in
             self?.toolbarController?.transition(to: self?.liveConfigVC ?? LiveConfigViewController())
+            self?.navigationDrawerController?.closeLeftView()
+        })
+        
+        <<< LabelRow() { row in
+            row.title = "微课"
+            row.tag = "mini"
+        }.cellSetup({ cell, row in
+            cell.accessoryType = .disclosureIndicator
+            cell.selectionStyle = .gray
+            cell.height = {(isIphone() ? 50 : 60)}
+        }).onCellSelection({ [weak self] cell, row in
+            self?.toolbarController?.transition(to: self?.recordConfigVC ?? RecordConfigViewController())
             self?.navigationDrawerController?.closeLeftView()
         })
                         

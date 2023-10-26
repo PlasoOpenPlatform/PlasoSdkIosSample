@@ -47,6 +47,8 @@ public struct RowTag {
     static let BLUETOOTHENABLED = "BluetoothEnabled"
     static let NEWTEACHINGAIDSENABLED = "NewTeachingAidsEnabled"
     static let INTERACTPPTENABLED = "InteractPPTEnabled"
+    static let SUPPORTHIGHLIGHTER = "supportHighlighter"
+    static let UPLOADLOGENABLED = "UploadLogEnabled"
     static let NEWSMALLBOARD = "NewSmallboard"
     static let CLASSTEST = "ClassTest"
     static let TIMERENABLED = "TimerEnabled"
