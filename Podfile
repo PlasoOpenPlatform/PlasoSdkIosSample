@@ -9,8 +9,8 @@ target 'PlasoSdkDemoForiOS' do
   use_frameworks!
 
   # Pods for PlasoSdkDemoForiOS
-  pod 'PlasoUpimeSdkModule', '1.28.804'
-  pod 'PlasoStyleUpime', '1.28.804'
+  pod 'PlasoUpimeSdkModule', '1.30.202'
+  pod 'PlasoStyleUpime', '1.30.202'
   pod 'Material', '3.1.8'
   pod 'Eureka', '5.4.0'
   
