@@ -87,6 +87,10 @@ class RecordFeatureConfigViewController: BaseConfigViewController {
             $0.title = "支持撤销"
             $0.value = true
         }
+        <<< SwitchRow(RowTag.HighLIGHTER) {
+            $0.title = "支持荧光笔"
+            $0.value = true
+        }
         <<< SwitchRow(RowTag.CLOUDDISK) {
             $0.title = "支持云盘"
             $0.value = true
@@ -99,17 +103,21 @@ class RecordFeatureConfigViewController: BaseConfigViewController {
             $0.title = "新教具"
             $0.value = true
         }
+        
+        <<< ActionSheetRow<String>(RowTag.OBJECTERASER) {
+            $0.title = "对象擦类型"
+            $0.selectorTitle = "选择对象擦类型"
+            $0.options = ObjectEraserType.allCases.map { $0.displayText }
+            $0.value = ObjectEraserType.pointErase.displayText
+        }.onPresent { from, to in
+            to.popoverPresentationController?.permittedArrowDirections = .up
+        }
+        
+        +++ Section("PPT")
         <<< SwitchRow(RowTag.INTERACTPPTENABLED) {
             $0.title = "可交互PPT"
             $0.value = true
         }
-//        <<< SwitchRow(RowTag.SUPPORTHIGHLIGHTER) {
-//            $0.title = "荧光笔"
-//            $0.value = true
-//        }
-        
-        
-        +++ Section("PPT")
         <<< ActionSheetRow<String>(RowTag.NEWPPT) {
             $0.title = "PPT类型"
             $0.selectorTitle = "选择PPT解析类型"
@@ -131,10 +139,6 @@ extension RecordFeatureConfigViewController {
     func interactPPTEnabled() -> Bool {
         return form.rowBy(tag: RowTag.INTERACTPPTENABLED)?.baseValue as? Bool ?? true
     }
-    
-//    func supportHighlighter() -> Bool {
-//        return form.rowBy(tag: RowTag.SUPPORTHIGHLIGHTER)?.baseValue as? Bool ?? true
-//    }
     
     private func watermarkEnabled() -> Bool {
         return form.rowBy(tag: RowTag.WATERMARKENABLED)?.baseValue as? Bool ?? false
@@ -160,16 +164,23 @@ extension RecordFeatureConfigViewController {
         return form.rowBy(tag: RowTag.UNDOENABLED)?.baseValue as? Bool ?? true
     }
     
+    func highLighter() -> Bool {
+        return form.rowBy(tag: RowTag.HighLIGHTER)?.baseValue as? Bool ?? true
+    }
+    
     func newTeachingAidsEnabled() -> Bool {
         return form.rowBy(tag: RowTag.NEWTEACHINGAIDSENABLED)?.baseValue as? Bool ?? true
     }
     
     func pptType() -> UpimeFileType {
+        
         let ppt = form.rowBy(tag: RowTag.NEWPPT)?.baseValue as? String ?? ""
         
         switch ppt {
         case "大西模式":
             return UpimeFileType.NEW_PPT
+        case "iSpring模式":
+            return UpimeFileType.ISPRING_PPT
         default:
             return UpimeFileType.PPT
         }
@@ -194,5 +205,9 @@ extension RecordFeatureConfigViewController {
     func fileDisplayMode() -> UpimeOpenFileMode {
         let type = form.rowBy(tag: RowTag.FILETYPE)?.baseValue as? String ?? ""
         return type == "图片模式" ? .picture : .window
+    }
+    
+    func objectEraserType() -> UInt {
+        return ObjectEraserType.from(row: form.rowBy(tag: RowTag.OBJECTERASER))
     }
 }

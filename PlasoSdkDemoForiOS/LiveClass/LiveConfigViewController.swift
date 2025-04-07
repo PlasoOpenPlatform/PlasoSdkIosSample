@@ -9,8 +9,11 @@ import UIKit
 import Material
 import PlasoStyleUpime
 
+let AppGroupID = "group.com.plaso.plasostudentipad.group"
+let ExtensionName = "PlasoSDKScreenShare"
+
 class LiveConfigViewController: UIViewController {
-    
+        
     private let authorizationConfigVC = AuthorizationConfigViewController()
     private let basicConfigVC = BasicConfigViewController()
     private let rtcConfigVC = RTCConfigViewController()
@@ -102,14 +105,15 @@ class LiveConfigViewController: UIViewController {
         self.liveVC = liveVC
         liveVC.openFileMode = featureConfigVC.fileDisplayMode()
         liveVC.delegate = self
+        liveVC.plasoDelegate = self;
         liveVC.supportCloudBox = true
         liveVC.supportLocalFile = true
         liveVC.enableVideoMark = true
-//        liveVC.uploadLogEnabled = featureConfigVC.uploadLogEnabled() //1.30.202不支持上传日志，所以这边注释掉，1.23.111才支持
+        liveVC.uploadLogEnabled = featureConfigVC.uploadLogEnabled()
         liveVC.enableSendMessage = featureConfigVC.sendMessageEnabled()
         liveVC.configKey = featureConfigVC.configKey()
         if featureConfigVC.newTeachingAidsEnabled() {
-            liveVC.teachToolTypes = PureUpimeTeachToolType(rawValue: PureUpimeTeachToolType.TRIANGLE.rawValue | PureUpimeTeachToolType.RECT.rawValue | PureUpimeTeachToolType.ELLIPSE.rawValue | PureUpimeTeachToolType.LINE.rawValue | PureUpimeTeachToolType.CIRCLE.rawValue | PureUpimeTeachToolType.DASHEDLINE.rawValue | PureUpimeTeachToolType.SQUARE.rawValue)!
+            liveVC.teachToolTypes = PureUpimeTeachToolType(rawValue: PureUpimeTeachToolType.TRIANGLE.rawValue | PureUpimeTeachToolType.RECT.rawValue | PureUpimeTeachToolType.ELLIPSE.rawValue | PureUpimeTeachToolType.LINE.rawValue | PureUpimeTeachToolType.CIRCLE.rawValue | PureUpimeTeachToolType.DASHEDLINE.rawValue | PureUpimeTeachToolType.SQUARE.rawValue | PureUpimeTeachToolType.ARROW.rawValue | PureUpimeTeachToolType.FANSHAPED.rawValue | PureUpimeTeachToolType.PARALLELOGRAM.rawValue)!
         }
 
         liveVC.enableInteractPPT = featureConfigVC.interactPPTEnabled()
@@ -159,6 +163,7 @@ class LiveConfigViewController: UIViewController {
         
         liveVC.waterMarkDynamic = featureConfigVC.watermarkDynamicEnabled()
         liveVC.supportUndo = featureConfigVC.undoEnabled()
+        liveVC.supportHighlighter = featureConfigVC.highLighter()
 
         if let remindTime = basicConfigVC.remindTime() {
             liveVC.endRemindTime = Int(remindTime.timeIntervalSince1970)
@@ -188,11 +193,47 @@ class LiveConfigViewController: UIViewController {
         //to2.url = "https://www.sina.com"
 
         liveVC.webviewList = [to,to2]
-        self.present(liveVC, animated: true, completion: nil)
         
+        
+        liveVC.enableSaveDocIndex = featureConfigVC.enableSaveDocIndex()
+        liveVC.enableSignInLocation = featureConfigVC.enableSignInLocation()
+        liveVC.enableVote = featureConfigVC.enableVote()
+        liveVC.enableCtlANS = featureConfigVC.enableCtlANS()
+        liveVC.shouldShowTeacherMember = featureConfigVC.shouldShowTeacherMember()
+        liveVC.shouldShowAssistantMember = featureConfigVC.shouldShowAssistantMember()
+        liveVC.enableSaveBoard = featureConfigVC.saveBoardEnabled()
+        
+        let groupInfo = UpimeIsolatedGroup()
+        groupInfo.groupIDs = ["1","2"]
+        groupInfo.groupUserCount = 5
+        groupInfo.classUserCount = 10
+        liveVC.isolatedGroup = groupInfo
+        
+        DispatchQueue.main.async {
+            self.present(liveVC, animated: true, completion: nil)
+        }
     }
     
     private func generateQuery() -> String {
+        /*
+         var MEDIA_TYPE={
+             AUDIO    : 1 << 0,//音频互动课堂
+             VIDEO    : 1 << 1,//视频互动课堂
+             LIVE     : 1 << 2,//直播
+             NOUPIME  : 1 << 3,//桌面
+             SEPARATED: 1 << 4,//线下头像窗口分离课堂;
+             PLATFORM: 1<< 5,//推流至第三方
+             MEETING: 1 << 6,//会议直播，数据来源三方推送
+             SERIES : 1 << 7,//系列，表示多场次的直播
+             STORAGE: 1 << 8, // 存储
+
+             WISDOM: 18,//智慧课堂，使用VIDEO | SEPARATED
+             // 废弃
+             LIVE_AUDIO : 5,//建议不使用，位|运算实现 1|4
+             LIVE_VIDEO : 6,//建议不使用 2|4
+             REAL_CAMERA : 15,//建议不使用 1|4
+         }
+         */
         let beginTime = Int(Date().timeIntervalSince1970)
         var parameters: [String : Any] = [:]
         parameters["beginTime"] = beginTime
@@ -212,6 +253,14 @@ class LiveConfigViewController: UIViewController {
 
 }
 
+extension LiveConfigViewController: PlasoFlutterDelegate {
+    func plasoFlutterDisposed() {
+        DispatchQueue.main.async {
+            PlasoStyleUpimeClient.dispose();
+        }
+    }
+}
+
 extension LiveConfigViewController: TextFieldDelegate, UpimeLiveDelegate, UpimeEditorDelegate, PlasoCloudDiskTableViewControllerDelegate {
     
     //-------------------------UpimeEditorDelegate-----------------------------
@@ -227,7 +276,7 @@ extension LiveConfigViewController: TextFieldDelegate, UpimeLiveDelegate, UpimeE
     func upimeEditorVC(_ upimeEditorVC: UIViewController & UpimeEditorProtocol, getSignQueryByParams params: [AnyHashable : Any], completion: @escaping (String?) -> Void) {
         print("params is \(params)")
         var infoDic = params
-        infoDic["appId"] = UserDefaults.standard.string(forKey: "PlasoAppID") ?? ""
+        infoDic["appId"] = UserDefaults.standard.string(forKey: UserDefaultsKey.PLASOAPPID) ?? ""
         infoDic["validBegin"] = Int(Date().timeIntervalSince1970)
         infoDic["validTime"] = 120
         guard let info = infoDic as? [String: Any] else {
@@ -255,10 +304,46 @@ extension LiveConfigViewController: TextFieldDelegate, UpimeLiveDelegate, UpimeE
         result(url)
     }
     
+    func liveVC(_ liveVC: UIViewController & UpimeLiveProtocol, startScanCode scene: String, params: String, success: @escaping (String, String) -> Void, failed: @escaping (String, String) -> Void) {
+        
+        print("startScanCode scene:\(scene) params:\(params)")
+        let controller = UIViewController()
+        controller.view.backgroundColor = .yellow
+        
+        
+        liveVC.present(controller, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                controller.dismiss(animated: true) {
+                    print("模拟关闭")
+                    success(scene,"testcode")
+                }
+            }
+        }
+    }
+    
+    /// 获取可打开的网页地址
+    func liveVC(_ liveVC: UIViewController & UpimeLiveProtocol, getWebviewUrl type: Int32, result: @escaping (String) -> Void) {
+        
+        let urls = ["https://dev.plaso.cn/static/yxt/?appType=teachingMaterial&token=ptt3-1-ptt3wls-8bd3c8c3dc7f417988bed2ce19baeed8-5.17.700-ANDROID-plaso&androidVersion=5.17.700&platform=plaso"]//"https://www.qq.com",
+        let url = urls.randomElement()
+        print("open url: \(url!)")
+        result(url!)
+    }
+    
     
     //-------------------------UpimeEditorDelegate----------------------------------
     
     func upimeShowCloudDisk(_ upimeEditorVC: UIViewController & UpimeEditorProtocol) {
+        if let vc = upimeEditorVC.presentedViewController {
+            vc.dismiss(animated: true, completion: nil)
+        }
+        let cdVC = PlasoCloudDiskTableViewController.init()
+        cdVC.delegate = self
+        let nav = UINavigationController.init(rootViewController: cdVC)
+        upimeEditorVC.present(nav, animated: true, completion: nil)
+    }
+    
+    func upimeShowCloudDisk(_ upimeEditorVC: UIViewController & UpimeEditorProtocol, checkAi: Bool) {
         if let vc = upimeEditorVC.presentedViewController {
             vc.dismiss(animated: true, completion: nil)
         }
@@ -306,7 +391,7 @@ extension LiveConfigViewController: TextFieldDelegate, UpimeLiveDelegate, UpimeE
             upimeFile.title = file["title"] as? String ?? ""
             self.liveVC?.insert(upimeFile)
         }
-                
+        
         if let vc = self.liveVC?.presentedViewController {
             vc.dismiss(animated: true, completion: nil)
         }

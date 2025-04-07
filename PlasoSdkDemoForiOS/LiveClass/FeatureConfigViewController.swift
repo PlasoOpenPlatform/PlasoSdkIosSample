@@ -49,11 +49,6 @@ class FeatureConfigViewController: BaseConfigViewController {
             $0.value = false
             $0.hidden = "$watermark_enabled == false"
         }
-        
-        <<< SwitchRow(RowTag.UPLOADLOGENABLED) {
-            $0.title = "允许上传日志"
-            $0.value = true
-        }
 
         +++ Section("功能")
         <<< ActionSheetRow<String>(RowTag.FILETYPE) {
@@ -73,6 +68,10 @@ class FeatureConfigViewController: BaseConfigViewController {
             $0.title = "支持撤销"
             $0.value = true
         }
+        <<< SwitchRow(RowTag.HighLIGHTER) {
+            $0.title = "支持荧光笔"
+            $0.value = true
+        }
         <<< TextRow(RowTag.CONFIGKEY) {
             $0.title = "ConfigKey"
             $0.placeholder = "请输入ConfigKey"
@@ -81,6 +80,29 @@ class FeatureConfigViewController: BaseConfigViewController {
             $0.title = "可交互PPT"
             $0.value = true
         }
+        <<< SwitchRow(RowTag.UPLOADLOGENABLED) {
+            $0.title = "允许上传日志"
+            $0.value = true
+        }
+        <<< SwitchRow(RowTag.ENABLESAVEDOCINDEX) {
+            $0.title = "允许保存文档页数索引"
+            $0.value = true
+        }
+        <<< SwitchRow(RowTag.ENABLESIGNINLOCATION) {
+            $0.title = "允许签到时获取定位"
+            $0.value = true
+        }
+        
+        <<< SwitchRow(RowTag.MEMBER_TEACHER) {
+            $0.title = "老师显示成员列表"
+            $0.value = true
+        }
+        
+        <<< SwitchRow(RowTag.MEMBER_ASSISTANT) {
+            $0.title = "助教显示成员列表"
+            $0.value = true
+        }
+        
         
         +++ Section("工具栏")
         <<< SwitchRow(RowTag.TOOLBARENABLED) {
@@ -98,6 +120,10 @@ class FeatureConfigViewController: BaseConfigViewController {
         <<< SwitchRow(RowTag.CLASSTEST) {
             $0.title = "添加随堂测"
             $0.value = true
+        }
+        <<< SwitchRow(RowTag.NEWCLASSTEST) {
+            $0.title = "开启新版随堂测"
+            $0.value = false
         }
         <<< SwitchRow(RowTag.TIMERENABLED) {
             $0.title = "添加定时器"
@@ -123,21 +149,45 @@ class FeatureConfigViewController: BaseConfigViewController {
             $0.title = "添加骰子"
             $0.value = true
         }
+        <<< SwitchRow(RowTag.VOTEENABLED) {
+            $0.title = "添加投票"
+            $0.value = false
+        }
         <<< SwitchRow(RowTag.RESIDENTCAMERA) {
             $0.title = "常驻摄像头"
             $0.value = true
         }
-
+        <<< SwitchRow(RowTag.SAVEBOARD) {
+            $0.title = "保存板书"
+            $0.value = true
+        }
 
         <<< IntRow(RowTag.REDPACKAGELIMIT) {
             $0.title = "红包雨上限"
             $0.placeholder = "请输入红包雨个数上限"
         }
         
+        <<< ActionSheetRow<String>(RowTag.OBJECTERASER) {
+            $0.title = "对象擦类型"
+            $0.selectorTitle = "选择对象擦类型"
+            $0.options = ObjectEraserType.allCases.map { $0.displayText }
+            $0.value = ObjectEraserType.pointErase.displayText
+        }.onPresent { from, to in
+            to.popoverPresentationController?.permittedArrowDirections = .up
+        }
+        
+        +++ Section("其他")
+        <<< SwitchRow(RowTag.CTLANSENABLED) {
+            $0.title = "允许控制降噪(ANS)"
+            $0.value = true
+        }
     }
     
     override func configInfoParameter() -> [String : Any] {
-        return [:]
+        var dic = [String : Any]()
+        dic["enableNewClassExam"] = newClassTestEnabled() ? 1 : 0
+        dic["d_enableObjectEraser"] = objectEraserType()
+        return dic
     }
 
 }
@@ -175,6 +225,10 @@ extension FeatureConfigViewController {
     
     func classTestEnabled() -> Bool {
         return form.rowBy(tag: RowTag.CLASSTEST)?.baseValue as? Bool ?? true
+    }
+    
+    func newClassTestEnabled() -> Bool {
+        return form.rowBy(tag: RowTag.NEWCLASSTEST)?.baseValue as? Bool ?? false
     }
     
     func timerEnabled() -> Bool {
@@ -225,8 +279,20 @@ extension FeatureConfigViewController {
         return form.rowBy(tag: RowTag.UNDOENABLED)?.baseValue as? Bool ?? true
     }
     
+    func highLighter() -> Bool {
+        return form.rowBy(tag: RowTag.HighLIGHTER)?.baseValue as? Bool ?? true
+    }
+    
+    func saveBoardEnabled() -> Bool {
+        return form.rowBy(tag: RowTag.SAVEBOARD)?.baseValue as? Bool ?? true
+    }
+    
     func redPackageLimit() -> Int {
         return form.rowBy(tag: RowTag.REDPACKAGELIMIT)?.baseValue as? Int ?? 0
+    }
+    
+    func objectEraserType() -> UInt {
+        return ObjectEraserType.from(row: form.rowBy(tag: RowTag.OBJECTERASER))
     }
     
     func toolBarEnabled() -> Bool {
@@ -237,6 +303,30 @@ extension FeatureConfigViewController {
         return form.rowBy(tag: RowTag.RESIDENTCAMERA)?.baseValue as? Bool ?? true
     }
     
-
+    func enableSaveDocIndex() -> Bool {
+        return form.rowBy(tag: RowTag.ENABLESAVEDOCINDEX)?.baseValue as? Bool ?? true
+    }
     
+    func enableSignInLocation() -> Bool {
+        return form.rowBy(tag: RowTag.ENABLESIGNINLOCATION)?.baseValue as? Bool ?? true
+    }
+    
+    func enableVote() -> Bool {
+        return form.rowBy(tag: RowTag.VOTEENABLED)?.baseValue as? Bool ?? false
+    }
+    
+    func enableCtlANS() -> Bool {
+        return form.rowBy(tag: RowTag.CTLANSENABLED)?.baseValue as? Bool ?? false
+    }
+    
+    func shouldShowTeacherMember() -> Bool {
+        return form.rowBy(tag: RowTag.MEMBER_TEACHER)?.baseValue as? Bool ?? true
+    }
+    
+    func shouldShowAssistantMember() -> Bool {
+        return form.rowBy(tag: RowTag.MEMBER_ASSISTANT)?.baseValue as? Bool ?? true
+    }
+    
+    
+  
 }

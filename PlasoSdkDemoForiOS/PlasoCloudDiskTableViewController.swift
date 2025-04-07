@@ -27,6 +27,12 @@ class PlasoCloudDiskTableViewController: UITableViewController {
         ],
         
         [
+            "title": "ene - original",
+            "url": "http://192.168.2.243:8000/M3U8Example/ene%20-%20original.m3u8",
+            "fileType": "Video",
+        ],
+        
+        [
             "title": "未显示?",
             "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/6336972900000024cd000002.pdf",
             "fileType": "PDF",
@@ -57,7 +63,11 @@ class PlasoCloudDiskTableViewController: UITableViewController {
             "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E6%89%8B%E5%86%99%E9%94%99%E4%BD%8D.pdf",
             "fileType": "PDF",
         ],
-        
+        [
+            "title": "第7页显示错误",
+            "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/2022%E5%B9%B4%E6%B1%9F%E8%8B%8F%E7%9C%81%E5%8D%97%E4%BA%AC%E5%B8%82%E4%B8%AD%E8%80%83%E7%89%A9%E7%90%86%E4%B8%89%E6%A8%A1%E8%AF%95%E5%8D%B7%EF%BC%88%E4%B8%8A%E8%AF%BE%E7%89%88%EF%BC%89.pdf",
+            "fileType": "PDF",
+        ],
         [
             "title": "陈瑞-白狐.mp3",
             "url": "https://file.plaso.cn/upime/demo/file_center/%E9%99%88%E7%91%9E%20-%20%E7%99%BD%E7%8B%90.mp3",

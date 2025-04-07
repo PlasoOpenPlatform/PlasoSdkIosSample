@@ -13,15 +13,20 @@ class AuthorizationConfigViewController: BaseConfigViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .green
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateUI()
     }
     
     private func setupUI() {
         form
-        +++ Section("环境设置") 
+        +++ Section("环境设置")
 
-        <<< ActionSheetRow<String>() {
+        <<< ActionSheetRow<String>(RowTag.CURRENTENV) {
             $0.title = "当前环境"
             $0.selectorTitle = "切换环境"
             $0.options = ["WWW", "TEST", "DEV"]
@@ -73,6 +78,23 @@ class AuthorizationConfigViewController: BaseConfigViewController {
             cell.selectionStyle = .none
         })
 
+    }
+    
+    private func updateUI() {
+        if let env = UserDefaults.standard.string(forKey: UserDefaultsKey.PLASOENV), let actionSheetRow = form.rowBy(tag: RowTag.CURRENTENV) as? ActionSheetRow<String> {
+            actionSheetRow.value = env
+        }
+        guard let appId = UserDefaults.standard.string(forKey: UserDefaultsKey.PLASOAPPID), let appKey = UserDefaults.standard.string(forKey: UserDefaultsKey.PLASOAPPKEY) else {
+            return
+        }
+
+        if let row = form.rowBy(tag: RowTag.APPID) {
+            row.baseValue = appId
+        }
+        if let row = form.rowBy(tag: RowTag.APPKEY) {
+            row.baseValue = appKey
+        }
+        form.first?.reload()
     }
 
     override func configInfoParameter() -> [String : Any] {

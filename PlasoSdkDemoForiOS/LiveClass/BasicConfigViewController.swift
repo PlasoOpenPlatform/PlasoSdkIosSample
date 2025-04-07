@@ -20,7 +20,7 @@ class BasicConfigViewController: BaseConfigViewController {
         CheckRow.defaultCellSetup = { cell, row in cell.tintColor = .blue }
 
         form
-        +++ Section("个人") 
+        +++ Section("个人")
         <<< ActionSheetRow<String>(RowTag.USERTYPE) {
             $0.title = "角色"
             $0.selectorTitle = "选择角色类型"
@@ -62,11 +62,21 @@ class BasicConfigViewController: BaseConfigViewController {
             }
         })
         
-        <<< LabelRow(RowTag.MEETINGTYPE) {
+        <<< ActionSheetRow<String>(RowTag.MEETINGTYPE) {
             $0.title = "课堂类型"
+            $0.selectorTitle = "选择课堂类型"
+            $0.options = ["public", "private", "meeting"]
             $0.value = "public"
+        }.onPresent { from, to in
+            to.popoverPresentationController?.permittedArrowDirections = .up
         }
-        <<< LabelRow(RowTag.SCREENRATIO) {
+        
+        <<< IntRow(RowTag.MEETINGPERMISSION) {
+            $0.title = "会议模式"
+            $0.placeholder = "0/1/2/4组合"
+        }
+
+        <<< TextRow(RowTag.SCREENRATIO) {
             //目前仅支持两种输入，1：1280x720（16:9的课堂，字母是x，不是*）2：不写（4:3的课堂）
             $0.title = "屏幕比例"
             $0.value = "1280x720"
@@ -88,7 +98,6 @@ class BasicConfigViewController: BaseConfigViewController {
                 cell.datePicker.datePickerMode = .dateAndTime
             }
         }
-
     }
     
     private func resetSelected(_ selectedRow: BaseRow) {

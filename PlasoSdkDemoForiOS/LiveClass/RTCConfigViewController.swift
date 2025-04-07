@@ -35,20 +35,18 @@ class RTCConfigViewController: BaseConfigViewController {
         })
                 
         +++ Section("模式")
-        <<< LabelRow(RowTag.APPTYPE) {
+        <<< TextRow(RowTag.APPTYPE) {
             $0.title = "AppType"
             $0.value = "livaclassSDK"
         }
         
-        <<< ActionSheetRow<String>() {
+        <<< ActionSheetRow<String>(RowTag.SHARPNESS) {
             $0.title = "清晰度"
             $0.options = ["标清(10)", "高清(20)", "超清(30)"]
             $0.value = "标清(10)"
         }.onPresent { from, to in
             to.popoverPresentationController?.permittedArrowDirections = .up
-        }.onChange({ row in
-
-        })
+        }
     
     }
     

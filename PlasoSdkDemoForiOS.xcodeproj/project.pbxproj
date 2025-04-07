@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12CBAEAE2D9559DF0038B595 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBAEAD2D9559DF0038B595 /* MainViewController.swift */; };
+		12CBAEB02D955A1F0038B595 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12CBAEAF2D955A1F0038B595 /* SceneDelegate.swift */; };
 		17313AD42947171E001A7312 /* LiveConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD32947171E001A7312 /* LiveConfigViewController.swift */; };
 		17313AD62947193C001A7312 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD52947193C001A7312 /* LeftViewController.swift */; };
 		17313AD829474833001A7312 /* PlasoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD729474833001A7312 /* PlasoUtils.swift */; };
 		17313ADA294751B8001A7312 /* RecordConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AD9294751B8001A7312 /* RecordConfigViewController.swift */; };
-		17313ADC29475A96001A7312 /* ConfigInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313ADB29475A96001A7312 /* ConfigInfo.swift */; };
 		17313ADF29485634001A7312 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313ADE29485634001A7312 /* TopBarView.swift */; };
 		17313AE1294894C7001A7312 /* AuthorizationConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AE0294894C7001A7312 /* AuthorizationConfigViewController.swift */; };
 		17313AE32948956D001A7312 /* BasicConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17313AE22948956D001A7312 /* BasicConfigViewController.swift */; };
@@ -28,7 +29,7 @@
 		EDC3358E27327A00004784F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC3358D27327A00004784F1 /* Assets.xcassets */; };
 		EDC3359127327A00004784F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDC3358F27327A00004784F1 /* LaunchScreen.storyboard */; };
 		EDC3359D27327A2C004784F1 /* AWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC3359827327A2B004784F1 /* AWebViewController.swift */; };
-		EDC3359F27327A2C004784F1 /* PlasoToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC3359B27327A2C004784F1 /* PlasoToolbarController.swift */; };
+		EDC3359F27327A2C004784F1 /* PlasoTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC3359B27327A2C004784F1 /* PlasoTabBarViewController.swift */; };
 		EDC335A027327A2C004784F1 /* PlasoCloudDiskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC3359C27327A2C004784F1 /* PlasoCloudDiskTableViewController.swift */; };
 		EDC335A927327A40004784F1 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC335A427327A40004784F1 /* Tool.swift */; };
 		EDC335AB27327A40004784F1 /* SignUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC335A727327A40004784F1 /* SignUtil.m */; };
@@ -36,11 +37,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12CBAEAD2D9559DF0038B595 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		12CBAEAF2D955A1F0038B595 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		17313AD32947171E001A7312 /* LiveConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveConfigViewController.swift; sourceTree = "<group>"; };
 		17313AD52947193C001A7312 /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
 		17313AD729474833001A7312 /* PlasoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlasoUtils.swift; sourceTree = "<group>"; };
 		17313AD9294751B8001A7312 /* RecordConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordConfigViewController.swift; sourceTree = "<group>"; };
-		17313ADB29475A96001A7312 /* ConfigInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigInfo.swift; sourceTree = "<group>"; };
 		17313ADE29485634001A7312 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
 		17313AE0294894C7001A7312 /* AuthorizationConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationConfigViewController.swift; sourceTree = "<group>"; };
 		17313AE22948956D001A7312 /* BasicConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicConfigViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +62,7 @@
 		EDC3358D27327A00004784F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDC3359027327A00004784F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDC3359827327A2B004784F1 /* AWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWebViewController.swift; sourceTree = "<group>"; };
-		EDC3359B27327A2C004784F1 /* PlasoToolbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlasoToolbarController.swift; sourceTree = "<group>"; };
+		EDC3359B27327A2C004784F1 /* PlasoTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlasoTabBarViewController.swift; sourceTree = "<group>"; };
 		EDC3359C27327A2C004784F1 /* PlasoCloudDiskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlasoCloudDiskTableViewController.swift; sourceTree = "<group>"; };
 		EDC335A227327A40004784F1 /* SignUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUtil.h; sourceTree = "<group>"; };
 		EDC335A427327A40004784F1 /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
@@ -82,6 +84,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12CBAEAC2D954D830038B595 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				17313ADE29485634001A7312 /* TopBarView.swift */,
+				17313AEC2949BAD6001A7312 /* FooterView.swift */,
+				17313AD52947193C001A7312 /* LeftViewController.swift */,
+				12CBAEAD2D9559DF0038B595 /* MainViewController.swift */,
+				EDC3359B27327A2C004784F1 /* PlasoTabBarViewController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		E0371A6D6AA3A7126B47C5FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,25 +125,22 @@
 		EDC33583273279FC004784F1 /* PlasoSdkDemoForiOS */ = {
 			isa = PBXGroup;
 			children = (
-				EDC33584273279FC004784F1 /* AppDelegate.swift */,
-				EDC3359B27327A2C004784F1 /* PlasoToolbarController.swift */,
-				EDC3359827327A2B004784F1 /* AWebViewController.swift */,
-				17313AD52947193C001A7312 /* LeftViewController.swift */,
-				EDC3359C27327A2C004784F1 /* PlasoCloudDiskTableViewController.swift */,
-				17313ADE29485634001A7312 /* TopBarView.swift */,
-				17313AEC2949BAD6001A7312 /* FooterView.swift */,
-				EDC335B327327A53004784F1 /* AppConfig.swift */,
-				17313AEA294995F6001A7312 /* Constant.swift */,
-				17313AD729474833001A7312 /* PlasoUtils.swift */,
+				12CBAEAC2D954D830038B595 /* Navigation */,
 				EDC335A127327A40004784F1 /* Tools */,
-				EDC335AF27327A4B004784F1 /* LiveClass */,
 				EDC335AD27327A4A004784F1 /* Record */,
-				EDC335BA273529B6004784F1 /* OC-Brigding-Header.h */,
-				EDC335C1273533CC004784F1 /* Info.plist */,
-				EDC3358A273279FC004784F1 /* Main.storyboard */,
+				EDC335AF27327A4B004784F1 /* LiveClass */,
+				EDC335B327327A53004784F1 /* AppConfig.swift */,
+				EDC33584273279FC004784F1 /* AppDelegate.swift */,
 				EDC3358D27327A00004784F1 /* Assets.xcassets */,
+				12CBAEAF2D955A1F0038B595 /* SceneDelegate.swift */,
+				EDC3359827327A2B004784F1 /* AWebViewController.swift */,
+				17313AEA294995F6001A7312 /* Constant.swift */,
+				EDC335C1273533CC004784F1 /* Info.plist */,
 				EDC3358F27327A00004784F1 /* LaunchScreen.storyboard */,
-				17313ADB29475A96001A7312 /* ConfigInfo.swift */,
+				EDC3358A273279FC004784F1 /* Main.storyboard */,
+				EDC335BA273529B6004784F1 /* OC-Brigding-Header.h */,
+				EDC3359C27327A2C004784F1 /* PlasoCloudDiskTableViewController.swift */,
+				17313AD729474833001A7312 /* PlasoUtils.swift */,
 			);
 			path = PlasoSdkDemoForiOS;
 			sourceTree = "<group>";
@@ -137,9 +148,9 @@
 		EDC335A127327A40004784F1 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				EDC335A427327A40004784F1 /* Tool.swift */,
 				EDC335A227327A40004784F1 /* SignUtil.h */,
 				EDC335A727327A40004784F1 /* SignUtil.m */,
+				EDC335A427327A40004784F1 /* Tool.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -147,8 +158,8 @@
 		EDC335AD27327A4A004784F1 /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				17313AD9294751B8001A7312 /* RecordConfigViewController.swift */,
 				17313AF0294AAF11001A7312 /* RecordBasicConfigViewController.swift */,
+				17313AD9294751B8001A7312 /* RecordConfigViewController.swift */,
 				17313AF2294AAF29001A7312 /* RecordFeatureConfigViewController.swift */,
 			);
 			path = Record;
@@ -157,12 +168,12 @@
 		EDC335AF27327A4B004784F1 /* LiveClass */ = {
 			isa = PBXGroup;
 			children = (
-				17313AD32947171E001A7312 /* LiveConfigViewController.swift */,
 				17313AE0294894C7001A7312 /* AuthorizationConfigViewController.swift */,
-				17313AE22948956D001A7312 /* BasicConfigViewController.swift */,
-				17313AE429489594001A7312 /* RTCConfigViewController.swift */,
-				17313AE6294895A3001A7312 /* FeatureConfigViewController.swift */,
 				17313AEE2949C332001A7312 /* BaseConfigViewController.swift */,
+				17313AE22948956D001A7312 /* BasicConfigViewController.swift */,
+				17313AE6294895A3001A7312 /* FeatureConfigViewController.swift */,
+				17313AD32947171E001A7312 /* LiveConfigViewController.swift */,
+				17313AE429489594001A7312 /* RTCConfigViewController.swift */,
 			);
 			path = LiveClass;
 			sourceTree = "<group>";
@@ -292,15 +303,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				17313ADA294751B8001A7312 /* RecordConfigViewController.swift in Sources */,
+				12CBAEAE2D9559DF0038B595 /* MainViewController.swift in Sources */,
 				EDC3359D27327A2C004784F1 /* AWebViewController.swift in Sources */,
 				17313AEF2949C332001A7312 /* BaseConfigViewController.swift in Sources */,
 				17313AD42947171E001A7312 /* LiveConfigViewController.swift in Sources */,
 				17313AE32948956D001A7312 /* BasicConfigViewController.swift in Sources */,
+				12CBAEB02D955A1F0038B595 /* SceneDelegate.swift in Sources */,
 				EDC335AB27327A40004784F1 /* SignUtil.m in Sources */,
 				EDC335B427327A53004784F1 /* AppConfig.swift in Sources */,
 				17313AD829474833001A7312 /* PlasoUtils.swift in Sources */,
-				EDC3359F27327A2C004784F1 /* PlasoToolbarController.swift in Sources */,
-				17313ADC29475A96001A7312 /* ConfigInfo.swift in Sources */,
+				EDC3359F27327A2C004784F1 /* PlasoTabBarViewController.swift in Sources */,
 				17313AE529489594001A7312 /* RTCConfigViewController.swift in Sources */,
 				EDC335A927327A40004784F1 /* Tool.swift in Sources */,
 				EDC335A027327A2C004784F1 /* PlasoCloudDiskTableViewController.swift in Sources */,
@@ -480,12 +492,12 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.23.111;
+				MARKETING_VERSION = 1.53.300;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sdkdemo.plaso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -523,12 +535,12 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.23.111;
+				MARKETING_VERSION = 1.53.300;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sdkdemo.plaso;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
