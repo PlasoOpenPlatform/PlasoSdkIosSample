@@ -7,6 +7,23 @@
 //
 
 import UIKit
+import Alamofire
+
+// MARK: - Decodable Models
+struct APIResponse: Decodable {
+    let data: FileListData
+}
+
+struct FileListData: Decodable {
+    let files: [FileItem]
+}
+
+struct FileItem: Decodable {
+    let id: String
+    let originalName: String
+    let url: String
+    let convertPages: Int?
+}
 
 @objc protocol PlasoCloudDiskTableViewControllerDelegate {
     @objc optional
@@ -17,21 +34,19 @@ class PlasoCloudDiskTableViewController: UITableViewController {
     
     @objc var delegate: PlasoCloudDiskTableViewControllerDelegate?
     
+    let segmentedControl = UISegmentedControl(items: ["未解析文件", "预解析文件"])
     
-    var fileList = [
-        
+    var unparsedFileList = [
         [
             "title": "直角三角形",
             "url": "https://hls.videocc.net/ca19080b2e/a/ca19080b2e18fe999693b78a10d304fa.m3u8?device=desktop&pid=1665558120704X1832259",
             "fileType": "Video",
         ],
-        
         [
             "title": "ene - original",
             "url": "http://192.168.2.243:8000/M3U8Example/ene%20-%20original.m3u8",
             "fileType": "Video",
         ],
-        
         [
             "title": "未显示?",
             "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/6336972900000024cd000002.pdf",
@@ -57,7 +72,6 @@ class PlasoCloudDiskTableViewController: UITableViewController {
             "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E5%B0%8F%E5%8D%87%E5%88%9D%E8%AF%AD%E6%96%87%E7%BB%BC%E5%90%88%E7%B4%A0%E8%B4%A8%E7%8F%AD%EF%BC%886%E7%A7%8B%EF%BC%89-%E5%86%85%E5%AE%B9.pdf",
             "fileType": "PDF",
         ],
-        
         [
             "title": "手写错位",
             "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E6%89%8B%E5%86%99%E9%94%99%E4%BD%8D.pdf",
@@ -73,13 +87,11 @@ class PlasoCloudDiskTableViewController: UITableViewController {
             "url": "https://file.plaso.cn/upime/demo/file_center/%E9%99%88%E7%91%9E%20-%20%E7%99%BD%E7%8B%90.mp3",
             "fileType": "Audio",
         ],
-        
         [
             "title": "121.89m.mp4",
             "url": "https://file.plaso.cn/upime/demo/file_center/121.89m.mp4",
             "fileType": "Video",
         ],
-        
         [
             "title": "plaso_1610183429017_1.doc",
             "url": "https://file.plaso.cn/upime/demo/file_center/plaso_1610183429017_1.docx",
@@ -110,7 +122,6 @@ class PlasoCloudDiskTableViewController: UITableViewController {
             "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E8%AF%BE%E4%BB%B6-%E9%94%99%E4%BD%8D.pptx",
             "fileType": "PPT",
         ],
-        
         [
             "title": "新人培训.pptx",
             "url": "https://file.plaso.cn/upime/demo/file_center/1.pptx",
@@ -121,7 +132,6 @@ class PlasoCloudDiskTableViewController: UITableViewController {
             "url": "https://file.plaso.cn/upime/demo/file_center/swpier.pptx",
             "fileType": "PPT",
         ],
-        
         [
             "title": "pptx pri",
             "url": "https://file.plaso.cn/upime/demo/file_center/testpptnoPri.pptx",
@@ -132,7 +142,6 @@ class PlasoCloudDiskTableViewController: UITableViewController {
             "url": "https://c-ssl.duitang.com/uploads/item/201812/01/20181201234638_fFTBy.thumb.1000_0.gif",
             "fileType": "Image",
         ],
-        
         [
             "title": "jpg",
             "url": "https://file02.16sucai.com/d/file/2014/0427/071875652097059bbbffe106f9ce3a93.jpg",
@@ -143,7 +152,6 @@ class PlasoCloudDiskTableViewController: UITableViewController {
             "url": "https://pic.ntimg.cn/20110325/2457331_234414423000_2.png",
             "fileType": "Image",
         ],
-        
         [
             "title": "带音频的PPT",
             "url": "https://file-plaso.oss-cn-hangzhou.aliyuncs.com/dev-plaso/c2c/myfile/8613776561823/1651900016702_1651900014947.pptx",
@@ -154,13 +162,11 @@ class PlasoCloudDiskTableViewController: UITableViewController {
             "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/1.%E6%B3%A2%E6%99%AE%E5%85%88%E7%94%9F%E7%9A%84%E4%BC%81%E9%B9%85A20210810%E5%AE%9A-%E5%AE%8C%E5%85%A8%E6%97%A0%E5%88%87%E6%8D%A2.pptx",
             "fileType": "PPT",
         ],
-        
         [
             "title": "移动端不触发-平面图形计数进阶最终版.pptx",
             "url": "https://hz-public-files.oss-cn-hangzhou.aliyuncs.com/dev-plaso/dev-prod/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%8D%E8%A7%A6%E5%8F%91-%E5%B9%B3%E9%9D%A2%E5%9B%BE%E5%BD%A2%E8%AE%A1%E6%95%B0%E8%BF%9B%E9%98%B6%E6%9C%80%E7%BB%88%E7%89%88.pptx",
             "fileType": "PPT",
         ],
-        
         [
             "title": "oss 预解析ppt-ispring",
             "url" :"https://file.plaso.cn/dev-plaso/teaching/1325/1600103_0_1674012465650.pptx",
@@ -201,7 +207,6 @@ class PlasoCloudDiskTableViewController: UITableViewController {
             "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673679050637.pptx",
             "fileType": "PPT",
         ],
-       
         [
             "title": "ppt-ispring 1700425_0_1657528030807.pptx",
             "url" :"https://file.plaso.cn/dev-plaso/teaching/801448/1701830_0_1673679052313.pptx",
@@ -237,20 +242,88 @@ class PlasoCloudDiskTableViewController: UITableViewController {
             "url" :"https://file.plaso.cn/test-plaso/teaching/1139/1025484_0_1675660076072.pptx",
             "fileType": "PPT",
         ],
-        
-        
     ] as [[String: AnyObject]]
+    var preparsedFileList = [[String: AnyObject]]()
     
+    lazy var addButtonItem: UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addBarButtonClicked))
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+        self.navigationItem.titleView = segmentedControl
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addBarButtonClicked))
-        self.tableView .register(UITableViewCell.self, forCellReuseIdentifier: "CloudDiskCell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CloudDiskCell")
+        
+        fetchParsedData()
+        updateAddButtonVisibility()
+    }
+    
+    func fetchParsedData() {
+        let url = "http://120.55.3.51:3000/api/files/list?status=completed&limit=10000&offset=0"
+        let headers: HTTPHeaders = ["Accept": "application/json"]
+        
+        AF.request(url, headers: headers).responseDecodable(of: APIResponse.self) { [weak self] response in
+            guard let self = self else { return }
+            
+            switch response.result {
+            case .success(let apiResponse):
+                let fileItems = apiResponse.data.files
+                self.preparsedFileList = fileItems.map { fileItem in
+                    return [
+                        "id": fileItem.id as AnyObject,
+                        "title": fileItem.originalName as AnyObject,
+                        "url": fileItem.url as AnyObject,
+                        "fileType": self.fileType(from: fileItem.url, parsed: true) as AnyObject,
+                        "totalPages": fileItem.convertPages as AnyObject
+                    ]
+                }
+                
+                DispatchQueue.main.async {
+                    if self.segmentedControl.selectedSegmentIndex == 1 {
+                        self.tableView.reloadData()
+                    }
+                }
+                
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+    }
+    
+    func fileType(from url: String, parsed: Bool = false) -> String {
+        if url.hasSuffix(".mp4") || url.hasSuffix(".m3u8") {
+            return "Video"
+        } else if url.hasSuffix(".mp3") {
+            return "Audio"
+        } else if url.hasSuffix(".pdf") {
+            return "PDF"
+        } else if url.hasSuffix(".ppt") || url.hasSuffix(".pptx") {
+            return parsed ? "IPPT" : "PPT"
+        } else if url.hasSuffix(".doc") || url.hasSuffix(".docx") {
+            return "Word"
+        } else if url.hasSuffix(".xls") || url.hasSuffix(".xlsx") {
+            return "Excel"
+        } else if url.hasSuffix(".gif") || url.hasSuffix(".jpg") || url.hasSuffix(".png") {
+            return "Image"
+        }
+        return "None"
+    }
+    
+    @objc func segmentedControlValueChanged() {
+        tableView.reloadData()
+        updateAddButtonVisibility()
+    }
+    
+    func updateAddButtonVisibility() {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            self.navigationItem.rightBarButtonItem = addButtonItem
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     @objc func addBarButtonClicked() {
@@ -267,17 +340,33 @@ class PlasoCloudDiskTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fileList.count
+        if segmentedControl.selectedSegmentIndex == 0 {
+            return unparsedFileList.count
+        } else {
+            return preparsedFileList.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CloudDiskCell", for: indexPath)
-        cell.textLabel?.text = fileList[indexPath.row]["title"] as? String ?? ""
+        let file: [String: AnyObject]
+        if segmentedControl.selectedSegmentIndex == 0 {
+            file = unparsedFileList[indexPath.row]
+        } else {
+            file = preparsedFileList[indexPath.row]
+        }
+        cell.textLabel?.text = file["title"] as? String ?? ""
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.cloudDiskTableViewControllerDidSelectFile?(file: fileList[indexPath.row])
+        let file: [String: AnyObject]
+        if segmentedControl.selectedSegmentIndex == 0 {
+            file = unparsedFileList[indexPath.row]
+        } else {
+            file = preparsedFileList[indexPath.row]
+        }
+        delegate?.cloudDiskTableViewControllerDidSelectFile?(file: file)
     }
 }
 

@@ -8,6 +8,13 @@
 import UIKit
 import Material
 import PlasoStyleUpime
+import Alamofire
+
+struct ParsedUrlResp: Decodable {
+    let success: Bool
+    let url: String?
+}
+
 
 let AppGroupID = "group.com.plaso.plasostudentipad.group"
 let ExtensionName = "PlasoSDKScreenShare"
@@ -304,6 +311,51 @@ extension LiveConfigViewController: TextFieldDelegate, UpimeLiveDelegate, UpimeE
         result(url)
     }
     
+    func upimeVC(_ upimeVC: UIViewController & UpimeProtocol, getPreParseFileName info: [Any], suffix: String, result: @escaping (String) -> Void) {
+        guard info.count > 1, let extFileId = info[1] as? [String: Any] else {
+            return
+        }
+
+        func extractId(from value: Any?) -> String? {
+            if let map = value as? [String: Any], let id = map["id"] as? String, !id.isEmpty {
+                return id
+            }
+            if let text = value as? String {
+                let pattern = "id\\s*=\\s*([0-9a-fA-F\\-]{36}|[0-9a-zA-Z\\-_]+)"
+                if let range = text.range(of: pattern, options: .regularExpression) {
+                    let matchedString = String(text[range])
+                    let components = matchedString.components(separatedBy: "=")
+                    if components.count == 2 {
+                        return components[1].trimmingCharacters(in: .whitespaces)
+                    }
+                }
+            }
+            return nil
+        }
+
+        guard let id = extractId(from: extFileId) else {
+            return
+        }
+
+        let fileName = "_i\(suffix)"
+        let httpPath = "http://120.55.3.51:3000/api/files/\(id)/parsed-url?suffix=\(fileName)"
+        
+        let headers: HTTPHeaders = ["Accept": "application/json"]
+
+        AF.request(httpPath, headers: headers).responseDecodable(of: ParsedUrlResp.self) { response in
+            switch response.result {
+            case .success(let parsedResponse):
+                if parsedResponse.success, let realUrl = parsedResponse.url {
+                    DispatchQueue.main.async {
+                        result(realUrl)
+                    }
+                }
+            case .failure(let error):
+                print("getPreParseFileName request error: \(error)")
+            }
+        }
+    }
+    
     func liveVC(_ liveVC: UIViewController & UpimeLiveProtocol, startScanCode scene: String, params: String, success: @escaping (String, String) -> Void, failed: @escaping (String, String) -> Void) {
         
         print("startScanCode scene:\(scene) params:\(params)")
@@ -360,20 +412,24 @@ extension LiveConfigViewController: TextFieldDelegate, UpimeLiveDelegate, UpimeE
     //----------------------CloudDiskViewControllerDelegate----------------------------
     
     func cloudDiskTableViewControllerDidSelectFile(file: [String : AnyObject]) {
-        guard let urlStr = file["url"] as? String else {
-            return
+        
+        defer {
+            if let vc = self.liveVC?.presentedViewController {
+                vc.dismiss(animated: true, completion: nil)
+            }
         }
-        guard let webUrl = URL(string: urlStr) else {
-            return
-        }
+        
         guard let fileTypeStr = file["fileType"] as? String else {
             return
         }
+        
         var fileType: UpimeFileType
         if fileTypeStr == "Audio" {
             fileType = .AUDIO
         } else if fileTypeStr == "Video" {
             fileType = .VIDEO
+        } else if fileTypeStr == "IPPT" {
+            fileType = .ISPRING_PPT
         } else if fileTypeStr == "PDF" {
             fileType = .PDF
         } else if fileTypeStr == "Word" {
@@ -386,14 +442,23 @@ extension LiveConfigViewController: TextFieldDelegate, UpimeLiveDelegate, UpimeE
             fileType = .CANNOTHANDLE
         }
         
-        defer {
-            let upimeFile = UpimeFile.init(url: webUrl, type: fileType)
+        // If the file comes from our pre-parsed list, it will have an "id".
+        if let fileId = file["id"] as? String {
+            let infoArray: NSArray = [
+                "parsed",
+                ["id": fileId]
+            ]
+            
+            let upimeFile = UpimeFile(info: infoArray, type: fileType)
             upimeFile.title = file["title"] as? String ?? ""
+            upimeFile.pages = file["totalPages"] as? Int ?? 0
             self.liveVC?.insert(upimeFile)
-        }
-        
-        if let vc = self.liveVC?.presentedViewController {
-            vc.dismiss(animated: true, completion: nil)
+        } else { // Fallback for manually added files or unparsed files
+            if let urlStr = file["url"] as? String, let webUrl = URL(string: urlStr) {
+                let upimeFile = UpimeFile(url: webUrl, type: fileType)
+                upimeFile.title = file["title"] as? String ?? ""
+                self.liveVC?.insert(upimeFile)
+            }
         }
     }
     

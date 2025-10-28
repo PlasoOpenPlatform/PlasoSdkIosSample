@@ -52,8 +52,8 @@ class RecordFeatureConfigViewController: BaseConfigViewController {
         <<< ActionSheetRow<String>(RowTag.FILETYPE) {
             $0.title = "文件类型"
             $0.selectorTitle = "选择文件类型"
-            $0.options = ["图片模式", "窗口模式"]
-            $0.value = "图片模式"
+            $0.options = ["窗口模式", "图片模式"]
+            $0.value = "窗口模式"
         }.onPresent { from, to in
             to.popoverPresentationController?.permittedArrowDirections = .up
         }
