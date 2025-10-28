@@ -12,8 +12,8 @@ target 'PlasoSdkDemoForiOS' do
   pod 'Eureka', '5.4.0'
   pod 'Alamofire'
   
-  pod 'PlasoStyleUpime', '1.60.121'
-  pod 'PlasoUpimeSdkModule', '1.60.121'
+  pod 'PlasoStyleUpime', '1.60.122'
+  pod 'PlasoUpimeSdkModule', '1.60.122'
   pod 'PlasoProgressHUD'
 end
 

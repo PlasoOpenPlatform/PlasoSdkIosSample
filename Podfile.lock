@@ -34,7 +34,7 @@ PODS:
   - PlasoLogger (1.0.4):
     - PlasoCocoaLumberjack (= 3.7.4)
   - PlasoProgressHUD (0.0.1)
-  - PlasoStyleUpime (1.60.121):
+  - PlasoStyleUpime (1.60.122):
     - AFNetworking (~> 4.0.0)
     - AgoraRtcEngine_Special_iOS (= 4.2.6.205)
     - LAME-xcframework (~> 3.100.3)
@@ -49,7 +49,7 @@ PODS:
     - PlasoTXLiteAVSDK_TRTC/TRTC (= 12.2.16961)
   - PlasoTXLiteAVSDK_TRTC/TRTC (12.2.16961)
   - PlasoUpimeRedBag (1.0.13)
-  - PlasoUpimeSdkModule (1.60.121):
+  - PlasoUpimeSdkModule (1.60.122):
     - PlasoFlutter (= 3.22.3)
   - SSZipArchive (2.1.2)
   - TOCropViewController (2.6.1)
@@ -59,8 +59,8 @@ DEPENDENCIES:
   - Eureka (= 5.4.0)
   - Material (= 3.1.8)
   - PlasoProgressHUD
-  - PlasoStyleUpime (= 1.60.121)
-  - PlasoUpimeSdkModule (= 1.60.121)
+  - PlasoStyleUpime (= 1.60.122)
+  - PlasoUpimeSdkModule (= 1.60.122)
 
 SPEC REPOS:
   https://github.com/PlasoOpenPlatform/plaso-open-specs.git:
@@ -99,13 +99,13 @@ SPEC CHECKSUMS:
   PlasoFlutter: e686fda5761747c6e234f8af51d122be28de35bd
   PlasoLogger: 4b22e6a485dc814d4b4ace52b42d7b99df8d427b
   PlasoProgressHUD: 98fe38ec77cf727da6e08bdb43b036a66fdaf9f3
-  PlasoStyleUpime: 3215b18e14c15b0573cedce3ca3084f9feb052c5
+  PlasoStyleUpime: 2bfb29e862d4a176d2ba082f44943404ae65640a
   PlasoTXLiteAVSDK_TRTC: cef3c55e1356695081279f76a3334687f47234f4
   PlasoUpimeRedBag: 4f0a36a8675893a51d8598447ab18c3edcca741a
-  PlasoUpimeSdkModule: 58e1b0bff0cbb412ce6ee7774582b825b7dde80f
+  PlasoUpimeSdkModule: 15c6650135762a91644aa861497773949fb54e5d
   SSZipArchive: d4009d2ce5520a421f231fd97028cc0e2667eed8
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
 
-PODFILE CHECKSUM: 261e0252e7faa5e635a74716d3605626f6cf832e
+PODFILE CHECKSUM: 9dda2e2d8abbddb7e364985e4fd2f75cd68386ad
 
 COCOAPODS: 1.16.2
